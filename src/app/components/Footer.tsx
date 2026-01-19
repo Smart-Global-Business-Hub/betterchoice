@@ -8,37 +8,31 @@ export default function Footer() {
     };
 
     return (
-        <footer className="w-full bg-gray-900 text-white">
+        <footer className="w-full bg-[#101828] text-[#99A1AF]">
             {/* Main Footer Content */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     {/* Logo & Tagline */}
                     <div className="lg:col-span-1">
-                        <div className="flex items-center gap-2 mb-6">
-                            <span className="text-2xl font-bold text-[#33BBFF]" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                                Kobac
+                        <div className="mb-4">
+                            <span className="text-2xl font-bold text-[#FFFFFF]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                KOBAC
                             </span>
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                            Empowering communities through sustainable development, quality education, and inclusive opportunities.
+                        <p className="text-[#99A1AF] text-sm leading-relaxed">
+                            Empowerment & Development for sustainable communities worldwide.
                         </p>
-                        <div className="flex items-center gap-4">
-                            <SocialIcon icon="facebook" />
-                            <SocialIcon icon="twitter" />
-                            <SocialIcon icon="instagram" />
-                            <SocialIcon icon="linkedin" />
-                        </div>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="font-semibold text-base text-white mb-4">
+                        <h4 className="font-semibold text-base text-[#FFFFFF] mb-4">
                             Quick Links
                         </h4>
                         <nav className="flex flex-col gap-3">
                             <FooterLink text="About Us" onClick={() => scrollToSection("about")} />
                             <FooterLink text="What We Do" onClick={() => scrollToSection("what-we-do")} />
-                            <FooterLink text="Impact Stories" onClick={() => scrollToSection("impact")} />
+                            <FooterLink text="Impact" onClick={() => scrollToSection("impact")} />
                             <FooterLink text="Get Involved" onClick={() => scrollToSection("get-involved")} />
                             <FooterLink text="Contact" onClick={() => scrollToSection("contact")} />
                         </nav>
@@ -46,44 +40,41 @@ export default function Footer() {
 
                     {/* Programs */}
                     <div>
-                        <h4 className="font-semibold text-base text-white mb-4">
-                            Our Programs
+                        <h4 className="font-semibold text-base text-[#FFFFFF] mb-4">
+                            Programs
                         </h4>
                         <nav className="flex flex-col gap-3">
                             <FooterLink text="Sustainable Development" onClick={() => scrollToSection("what-we-do")} />
-                            <FooterLink text="Education for All" onClick={() => scrollToSection("what-we-do")} />
+                            <FooterLink text="Education" onClick={() => scrollToSection("what-we-do")} />
                             <FooterLink text="Vocational Training" onClick={() => scrollToSection("what-we-do")} />
                             <FooterLink text="Community Centers" onClick={() => scrollToSection("what-we-do")} />
                         </nav>
                     </div>
 
-                    {/* Contact Us */}
+                    {/* Follow Us */}
                     <div>
-                        <h4 className="font-semibold text-base text-white mb-4">
-                            Contact Us
+                        <h4 className="font-semibold text-base text-[#FFFFFF] mb-4">
+                            Follow Us
                         </h4>
-                        <div className="flex flex-col gap-3 text-gray-400 text-sm">
-                            <a href="mailto:info@kobac.org" className="hover:text-white transition-colors">
-                                info@kobac.org
-                            </a>
-                            <a href="tel:+254700123456" className="hover:text-white transition-colors">
-                                +254 700 123 456
-                            </a>
-                            <span>Nairobi, Kenya</span>
+                        <div className="flex items-center gap-4">
+                            <SocialIcon icon="facebook" />
+                            <SocialIcon icon="twitter" />
+                            <SocialIcon icon="instagram" />
+                            <SocialIcon icon="linkedin" />
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Bottom Bar */}
-            <div className="border-t border-gray-800">
+            <div className="border-t border-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <p className="text-gray-500 text-sm">
                         © 2024 Kobac. All rights reserved.
                     </p>
                     <div className="flex items-center gap-6 text-sm text-gray-500">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" className="hover:text-gray-900 transition-colors">Privacy Policy</a>
+                        <a href="#" className="hover:text-gray-900 transition-colors">Terms of Service</a>
                     </div>
                 </div>
             </div>
@@ -96,7 +87,7 @@ function FooterLink({ text, onClick }: { text: string; onClick: () => void }) {
         <button
             type="button"
             onClick={onClick}
-            className="text-gray-400 text-sm text-left hover:text-white transition-colors"
+            className="text-gray-500 text-sm text-left hover:text-gray-900 transition-colors"
         >
             {text}
         </button>
@@ -132,7 +123,7 @@ function SocialIcon({ icon }: SocialIconProps) {
     };
 
     return (
-        <a href="#" className="text-gray-500 hover:text-[#33BBFF] transition-colors">
+        <a href="#" className="text-gray-400 hover:text-gray-900 transition-colors">
             {icons[icon]}
         </a>
     );

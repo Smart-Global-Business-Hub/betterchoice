@@ -104,14 +104,25 @@ export default function LandingPage() {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <button
-                    onClick={() => scrollToSection("get-involved")}
-                    className="bg-[#33BBFF] hover:bg-[#1AA3E8] text-white font-medium px-8 py-4 rounded-full flex items-center gap-2 transition-colors"
+                      onClick={() => scrollToSection("get-involved")}
+                      className="group bg-[#33BBFF] hover:bg-[#1AA3E8] text-white font-medium px-8 py-4 rounded-full flex items-center gap-2 transition-colors"
                   >
                     Get Involved
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <svg
+                        className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                      <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
                     </svg>
                   </button>
+
                   <button
                     onClick={() => scrollToSection("what-we-do")}
                     className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-medium px-8 py-4 rounded-full transition-colors"
@@ -142,25 +153,27 @@ export default function LandingPage() {
       <section id="about" className="py-20 lg:py-32 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#33BBFF] rounded-full mb-6">
+            <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#ECF7FE] bg-[#ECF7FE] rounded-full mb-6"
+                  style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "18px" }}>
               About Us
             </span>
             <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-8"
-              style={{ fontFamily: "Poppins, sans-serif" }}
+              className=" text-gray-900 mb-8 "
+              style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "48px" }}
             >
               Committed to Creating Lasting Change
             </h2>
-            <p className="text-gray-600 text-lg max-w-4xl mx-auto mb-6">
+            <p className="text-gray-600 text-lg max-w-4xl mx-auto mb-6"
+               style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "18px" }}>
               Kobac is a community-driven development organization committed to fostering sustainable development, high-quality education, relevant vocational training, and inclusive community centers with supportive housing solutions. We believe that empowered communities—from children to youth and adults—drive long-lasting social and economic progress.
             </p>
-            <p className="text-gray-600 text-lg max-w-4xl mx-auto">
+            <p className="text-gray-600 text-lg max-w-4xl mx-auto" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "18px" }}>
               Our work is guided by the principles of{" "}
-              <span className="text-[#33BBFF]">equity,</span>{" "}
-              <span className="text-purple-500">dignity,</span>{" "}
-              <span className="text-pink-500">inclusion,</span>{" "}
-              <span className="text-orange-500">collaboration,</span> and{" "}
-              <span className="text-[#33BBFF]">sustainability</span>{" "}
+              <span className="text-[#009966]">equity,</span>{" "}
+              <span className="text-[#155DFC]">dignity,</span>{" "}
+              <span className="text-[#9810FA]">inclusion,</span>{" "}
+              <span className="text-[#F54900]">collaboration,</span> and{" "}
+              <span className="text-[#E60076]">sustainability</span>{" "}
               ensuring that communities have the tools, skills, and environments needed to lead prosperous lives.
             </p>
           </div>
@@ -168,32 +181,32 @@ export default function LandingPage() {
           {/* Vision & Mission Cards */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Vision Card */}
-            <div className="bg-gray-50 rounded-2xl p-8 lg:p-10">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-[#F0FDF4] rounded-2xl p-8 lg:p-10">
+              <div className="w-12 h-12 bg-[#00A63E] rounded-full flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-[#FFFFFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
+              <h3 className="text-2xl text-gray-900 mb-4" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "24px" }}>
                 Our Vision
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
                 A world where communities are educated, skilled, resilient, and have access to sustainable development opportunities and inclusive living spaces.
               </p>
             </div>
 
             {/* Mission Card */}
-            <div className="bg-gray-50 rounded-2xl p-8 lg:p-10">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-[#EFF6FF] rounded-2xl p-8 lg:p-10">
+              <div className="w-12 h-12 bg-[#155DFC] rounded-full flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-[#FFFFFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
+              <h3 className="text-2xl text-gray-900 mb-4" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "24px" }}>
                 Our Mission
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-4" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
                 To collaborate with communities, governments, and partners in delivering holistic development programs that:
               </p>
               <ul className="space-y-3">
@@ -204,9 +217,18 @@ export default function LandingPage() {
                   "Develop sustainable housing and safe communal spaces that foster social inclusion and dignity",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-[#33BBFF] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_29_1126)">
+                        <path d="M18.1675 8.33332C18.548 10.2011 18.2768 12.1428 17.399 13.8348C16.5212 15.5268 15.0899 16.8667 13.3437 17.6311C11.5976 18.3955 9.64215 18.5381 7.80354 18.0353C5.96494 17.5325 4.35429 16.4145 3.24019 14.8678C2.12609 13.3212 1.5759 11.4394 1.68135 9.53615C1.7868 7.63294 2.54153 5.8234 3.81967 4.4093C5.09781 2.9952 6.82211 2.06202 8.70502 1.76537C10.5879 1.46872 12.5156 1.82654 14.1666 2.77916" stroke="#155DFC" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.5 9.16671L10 11.6667L18.3333 3.33337" stroke="#155DFC" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_29_1126">
+                          <rect width="20" height="20" fill="white"/>
+                        </clipPath>
+                      </defs>
                     </svg>
+
                     <span className="text-gray-600 text-sm">{item}</span>
                   </li>
                 ))}
@@ -220,16 +242,18 @@ export default function LandingPage() {
       <section className="py-20 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#33BBFF] rounded-full mb-6">
+            <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#ECF7FE] bg-[#ECF7FE] rounded-full mb-6"
+                  style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "18px" }}>
               Featured Story
             </span>
             <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
-              style={{ fontFamily: "Poppins, sans-serif" }}
+              className=" text-gray-900 mb-6"
+              style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "24px" }}
             >
               Empowering Women Through Sustainable Agriculture
             </h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto"
+               style={{ fontFamily: "Inter, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
               In rural Kenya, our agricultural training program has helped over 500 women farmers increase their crop yields by 40% and gain financial independence. Meet Sarah, one of many success stories transforming her community.
             </p>
           </div>
@@ -255,10 +279,12 @@ export default function LandingPage() {
           <div className="flex flex-wrap justify-center gap-8 mt-10">
             {impactStats.map((stat, index) => (
               <div key={index} className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#33BBFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.1675 8.33332C18.548 10.2011 18.2768 12.1428 17.399 13.8348C16.5212 15.5268 15.0899 16.8667 13.3437 17.6311C11.5976 18.3955 9.64215 18.5381 7.80354 18.0353C5.96494 17.5325 4.35429 16.4145 3.24019 14.8678C2.12609 13.3212 1.5759 11.4394 1.68135 9.53615C1.7868 7.63294 2.54153 5.8234 3.81967 4.4093C5.09781 2.9952 6.82211 2.06202 8.70502 1.76537C10.5879 1.46872 12.5156 1.82654 14.1666 2.77916" stroke="#3DB1F5" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#3DB1F5" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span className="text-gray-700">{stat}</span>
+
+                <span className="text-[#364153]" style={{ fontFamily: "Inter, sans-serif", fontWeight: "400px", fontSize: "16px" }}>{stat}</span>
               </div>
             ))}
           </div>
@@ -269,23 +295,24 @@ export default function LandingPage() {
       <section id="what-we-do" className="py-20 lg:py-32 bg-gray-50 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#33BBFF] rounded-full mb-6">
+            <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#ECF7FE] bg-[#ECF7FE] rounded-full mb-6"
+                  style={{ fontFamily: "Inter, sans-serif", fontWeight: "500px", fontSize: "18px" }}>
               What We Do
             </span>
             <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
-              style={{ fontFamily: "Poppins, sans-serif" }}
+              className="text-[0A0A0A] mb-6"
+              style={{ fontFamily: "Inter, sans-serif", fontWeight: "500px", fontSize: "48px" }}
             >
               Committed to Creating Lasting Change
             </h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "18px" }}>
               Our programs are designed in partnership with communities to address their most pressing needs and create sustainable solutions.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {whatWeDoItems.map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-[white] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
                 <div className="h-64 overflow-hidden">
                   <img
                     src={item.image}
@@ -298,16 +325,16 @@ export default function LandingPage() {
                     {item.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="text-xs text-[#33BBFF] bg-blue-50 px-3 py-1 rounded-full"
+                        className="text-xs text-[#008236] bg-[#DCFCE7] px-3 py-1 rounded-full"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3" style={{ fontFamily: "Poppins, sans-serif" }}>
+                  <h3 className=" text-[#101828] mb-3" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "600px", fontSize: "24px" }}>
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  <p className="text-[#4A5565] mb-4" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>{item.description}</p>
                   <button className="text-[#33BBFF] font-medium flex items-center gap-2 hover:underline">
                     Learn More
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -321,41 +348,102 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Stories of Impact Section */}
-      <section id="impact" className="py-20 lg:py-32 bg-white scroll-mt-20">
+      {/* Impact Report Section */}
+      <section id="impact" className="py-20 lg:py-32 bg-[#33BBFF] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#33BBFF] rounded-full mb-6">
-              Stories of Impact
+          <div className="text-center mb-12">
+            <span className="inline-block text-white text-sm font-medium px-4 py-2 bg-white/20 rounded-full mb-6">
+              Impact Report
             </span>
             <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
-              style={{ fontFamily: "Poppins, sans-serif" }}
+              className="text-white mb-6"
+              style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "36px" }}
             >
-              Real Change, Real Lives
+              Measuring What Matters
             </h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Discover the inspiring stories of individuals and communities transformed through our programs.
+            <p className="text-white/90 text-lg max-w-3xl mx-auto" style={{ fontFamily: "Inter, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
+              Transparency and accountability are at the heart of everything we do. Here's our impact by the numbers.
+            </p>
+          </div>
+
+          {/* Stats Cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-10" >
+            {[
+              { number: "5000+", label: "Learners Supported", sublabel: "in quality education programs" },
+              { number: "3000+", label: "Youth Trained", sublabel: "in vocational and technical skills" },
+              { number: "100+", label: "Community Centers", sublabel: "Built or supported" },
+              { number: "500+", label: "Families Housed", sublabel: "provided with safe housing support" },
+            ].map((stat, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20">
+                <div className="text-4xl lg:text-5xl font-bold text-white mb-2" style={{ fontFamily: "Poppins, sans-serif" }}>
+                  {stat.number}
+                </div>
+                <div className="text-white font-medium mb-1">{stat.label}</div>
+                <div className="text-white/70 text-sm">{stat.sublabel}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <button className="bg-white text-[#33BBFF] px-8 py-4 rounded-full hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+                    style={{ fontFamily: "Inter, sans-serif", fontWeight: "500px", fontSize: "20px" }}>
+              Download Full Impact Report
+            </button>
+          </div>
+        </div>
+      </section>
+      <p className="text-center text-black mt-8"
+         style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
+        These metrics represent our commitment to transparency and measurable impact in the communities we serve.
+      </p>
+      {/* Stories of Impact Section */}
+      <section className="py-20 lg:py-32 bg-white scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2
+              className="text-gray-900 mb-6"
+              style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "48px" }}
+            >
+              Stories of Impact
+            </h2>
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "18px" }}>
+              Real stories from real people whose lives have been transformed through our programs.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[image8, image9, image10].map((image, index) => (
-              <div key={index} className="group relative rounded-2xl overflow-hidden">
-                <img
-                  src={image}
-                  alt={`Impact story ${index + 1}`}
-                  className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-white text-xl font-bold mb-2">
-                    {index === 0 && "Education Transforms Lives"}
-                    {index === 1 && "Building Stronger Communities"}
-                    {index === 2 && "Skills for the Future"}
+            {[
+              { image: image8, location: "Uganda", title: "Building Brighter Futures Through Education" },
+              { image: image9, location: "Ghana", tags: ["Climate-adaptive"], title: "Creating Opportunities for Young Leaders" },
+              { image: image10, location: "Somalia", tags: ["Climate-adaptive"], title: "Bringing Healthcare to Remote Villages" },
+            ].map((story, index) => (
+              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                <div className="h-64 overflow-hidden">
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="text-xs text-[#008236] bg-[#DCFCE7] px-3 py-1 rounded-full">
+                      {story.location}
+                    </span>
+                    {story.tags?.map((tag, tagIndex) => (
+                      <span key={tagIndex} className="text-xs text-[#008236] bg-[#DCFCE7] px-3 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "600px", fontSize: "24px" }}>
+                    {story.title}
                   </h3>
-                  <button className="text-white/80 hover:text-white flex items-center gap-2 text-sm">
-                    Read Story
+                  <p className="text-gray-600 text-sm mb-4" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
+                    We implement community-led initiatives that promote environmental sustainability, economic resilience, and long-term wellbeing.
+                  </p>
+                  <button className="text-[#33BBFF] font-medium flex items-center gap-2 hover:underline">
+                    Read More
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -368,120 +456,206 @@ export default function LandingPage() {
       </section>
 
       {/* Get Involved Section */}
-      <section id="get-involved" className="py-20 lg:py-32 bg-[#33BBFF] scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
-            style={{ fontFamily: "Poppins, sans-serif" }}
-          >
-            Join Us in Making a Difference
-          </h2>
-          <p className="text-white/90 text-lg max-w-2xl mx-auto mb-10">
-            Whether you want to volunteer, donate, or partner with us, there are many ways to contribute to our mission of empowering communities.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-[#33BBFF] font-medium px-8 py-4 rounded-full hover:bg-gray-100 transition-colors">
-              Donate Now
-            </button>
-            <button className="border-2 border-white text-white font-medium px-8 py-4 rounded-full hover:bg-white hover:text-[#33BBFF] transition-colors">
-              Become a Volunteer
-            </button>
-            <button className="border-2 border-white text-white font-medium px-8 py-4 rounded-full hover:bg-white hover:text-[#33BBFF] transition-colors">
-              Partner With Us
-            </button>
+      <section id="get-involved" className="py-20 lg:py-32  scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#ECF7FE] bg-[#ECF7FE] rounded-full mb-6"
+                  style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "18px" }}>
+              Get Involved
+            </span>
+            <h2
+              className="text-[#0A0A0A] mb-6"
+              style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "48px" }}
+            >
+              Join us in making a difference
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Explore opportunities to volunteer, donate, or partner with us.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Volunteer Card */}
+            <div className="bg-[#F0FDF4] rounded-2xl p-6">
+              <div className="w-12 h-12 bg-[#00A63E] rounded-full flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-gray-900 mb-3" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "600px", fontSize: "20px" }}>
+                Volunteer
+              </h3>
+              <p className="text-gray-600 text-sm mb-6" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
+                Join our education & training teams and make a direct impact in communities
+              </p>
+              <button className="w-full border-2 border-[#00A63E] text-[#00A63E] font-medium py-3 rounded-full hover:bg-[#00A63E] hover:text-white transition-colors">
+                Apply to Volunteer
+              </button>
+            </div>
+
+            {/* Partner Card */}
+            <div className="bg-[#EFF6FF] rounded-2xl p-6">
+              <div className="w-12 h-12 bg-[#155DFC] rounded-full flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              </div>
+              <h3 className="text-gray-900 mb-3" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "600px", fontSize: "20px" }}>
+                Partner
+              </h3>
+              <p className="text-gray-600 text-sm mb-6" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
+                Collaborate with us on sustainable development projects and community initiatives
+              </p>
+              <button className="w-full border-2 border-[#155DFC] text-[#155DFC] font-medium py-3 rounded-full hover:bg-[#155DFC] hover:text-white transition-colors">
+                Become a Partner
+              </button>
+            </div>
+
+            {/* Support Centers Card */}
+            <div className="bg-[#FDF4FF] rounded-2xl p-6">
+              <div className="w-12 h-12 bg-[#9810FA] rounded-full flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-gray-900 mb-3" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "600px", fontSize: "20px" }}>
+                Support Centers
+              </h3>
+              <p className="text-gray-600 text-sm mb-6" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
+                Help us build and maintain community centers and housing initiatives
+              </p>
+              <button className="w-full border-2 border-[#9810FA] text-[#9810FA] font-medium py-3 rounded-full hover:bg-[#9810FA] hover:text-white transition-colors">
+                Learn More
+              </button>
+            </div>
+
+            {/* Donate Card */}
+            <div className="bg-[#FFF7ED] rounded-2xl p-6">
+              <div className="w-12 h-12 bg-[#F54900] rounded-full flex items-center justify-center mb-6">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z" fill="#F54900"/>
+                  <path d="M17 20L23 26" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16 26L22 20L24 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 17H26" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M19 14H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M34 34L29 24L24 34" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M26 30H32" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+              </div>
+              <h3 className="text-gray-900 mb-3" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "600px", fontSize: "20px" }}>
+                Donate
+              </h3>
+              <p className="text-gray-600 text-sm mb-6" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
+                Your contribution directly changes lives and builds stronger communities
+              </p>
+              <button className="w-full border-2 border-[#F54900] text-[#F54900] font-medium py-3 rounded-full hover:bg-[#F54900] hover:text-white transition-colors">
+                Donate Now
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 lg:py-32 bg-white scroll-mt-20">
+      <section id="contact" className="py-20 lg:py-32 bg-[#33BBFF] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="inline-block text-[#33BBFF] text-sm font-medium px-4 py-2 border border-[#33BBFF] rounded-full mb-6">
-                Contact Us
-              </span>
               <h2
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
-                style={{ fontFamily: "Poppins, sans-serif" }}
+                className="text-[#ffffff] mb-8"
+                style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "60px" }}
               >
-                Get in Touch
+                Get in touch with us
               </h2>
-              <p className="text-gray-600 text-lg mb-8">
-                Have questions or want to learn more about our work? We'd love to hear from you.
-              </p>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-[#33BBFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 bg-[#0174B852] rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Email</h4>
-                    <p className="text-gray-600">info@kobac.org</p>
+                    <h4 className="font-semibold text-white">Email</h4>
+                    <p className="text-white/80">info@kobacdev.org</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-[#33BBFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 bg-[#0174B852] rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Phone</h4>
-                    <p className="text-gray-600">+254 700 123 456</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-[#33BBFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Location</h4>
-                    <p className="text-gray-600">Nairobi, Kenya</p>
+                    <h4 className="font-semibold text-white">Phone</h4>
+                    <p className="text-white/80">+252 - 634496816</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-2xl p-8">
+            <div style={{marginTop:"20%"}}>
               <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                  <input
+                <input
                     type="text"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33BBFF] focus:border-transparent outline-none"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    className="w-full bg-transparent border-0 border-b border-white/60 px-0 py-3 text-white placeholder-white/60 focus:outline-none focus:border-white focus:ring-0"
+                    placeholder="First name"
+                />
+
+                <div className="relative">
                   <input
-                    type="email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33BBFF] focus:border-transparent outline-none"
-                    placeholder="your@email.com"
+                      type="email"
+                      className="w-full bg-transparent border-0 border-b border-white/60 px-0 py-3 pr-12 text-white placeholder-white/60 focus:outline-none focus:border-white focus:ring-0"
+                      placeholder="Email"
                   />
+
+                  <button
+                      type="submit"
+                      className="absolute right-0 top-1/2 -translate-y-1/2 text-white"
+                  >
+                    <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                      <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </button>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33BBFF] focus:border-transparent outline-none resize-none"
-                    placeholder="How can we help?"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-[#33BBFF] hover:bg-[#1AA3E8] text-white font-medium py-4 rounded-lg transition-colors"
-                >
-                  Send Message
-                </button>
               </form>
+
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted Partners Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-[#364153] mb-4"
+              style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "24px" }}
+            >
+              Trusted Partners
+            </h2>
+            <p className="text-[#4A5565]" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "16px" }}>
+              Working together with leading organizations to create lasting impact
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
+            {["United Nations", "World Bank", "USAID", "European Union", "Gates Foundation", "UNICEF"].map((partner, index) => (
+              <div key={index} className="text-[#000000]" style={{ fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "14px" }}>
+                {partner}
+              </div>
+            ))}
           </div>
         </div>
       </section>
