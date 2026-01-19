@@ -1,5 +1,5 @@
 
-  # Kobac
+  # BetterChoice
 
   This is a code bundle for Generate Code. The original project is available at https://www.figma.com/design/Lklwo0lbISbnAHaxAskIOE/Generate-Code.
 
