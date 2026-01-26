@@ -15,12 +15,12 @@ export default function Footer() {
                     {/* Logo & Description */}
                     <div className="lg:col-span-1">
                         <div className="mb-4">
-                            <span className="text-xl font-semibold">
-                                <span className="text-white">A Better </span>
-                                <span className="text-[#2563EB]">Choice Care</span>
+                            <span >
+                                <span className="text-white" style={{fontFamily: "Manrope, sans-serif", fontWeight: "700", fontSize: "19px"}}>A Better </span>
+                                <span className="text-[#2563EB]" style={{fontFamily: "Manrope, sans-serif", fontWeight: "700", fontSize: "19px"}}>Choice Care</span>
                             </span>
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed text-white">
+                        <p className="text-gray-400 text-sm leading-relaxed text-white" style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}>
                             Providing compassionate, certified home care services across Ohio for seniors and individuals with developmental disabilities.
                         </p>
                     </div>
@@ -29,7 +29,7 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <p className="text-gray-400 text-sm leading-relaxed text-white">
+                        <p className="text-gray-400 text-sm leading-relaxed text-white" style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}>
                             We are an Equal Opportunity Provider. Services are provided without regard to race, color, or national origin.
                         </p>
                     </div>
@@ -42,37 +42,42 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="font-semibold text-base text-white mb-4">
+                        <h4 className="text-base text-white mb-4" style={{fontFamily: "Manrope, sans-serif", fontWeight: "500", fontSize: "18px"}}>
                             Quick Links
                         </h4>
                         <nav className="flex flex-col gap-3">
                             <button
                                 onClick={() => scrollToSection("passport-services")}
                                 className="text-gray-400 text-sm text-left hover:text-white text-white transition-colors"
+                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}
                             >
                                 PASSPORT Services
                             </button>
                             <button
                                 onClick={() => scrollToSection("dodd-services")}
                                 className="text-gray-400 text-sm text-left hover:text-white text-white transition-colors"
+                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}
                             >
                                 DODD Services
                             </button>
                             <button
                                 onClick={() => scrollToSection("why-choose-us")}
                                 className="text-gray-400 text-sm text-left hover:text-white text-white transition-colors"
+                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}
                             >
                                 For Families
                             </button>
                             <button
                                 onClick={() => scrollToSection("careers")}
                                 className="text-gray-400 text-sm text-left hover:text-white text-white transition-colors"
+                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}
                             >
                                 Careers
                             </button>
                             <button
                                 onClick={() => scrollToSection("contact")}
                                 className="text-gray-400 text-sm text-left hover:text-white text-white transition-colors"
+                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}
                             >
                                 Contact Us
                             </button>
@@ -81,20 +86,23 @@ export default function Footer() {
 
                     {/* Service Areas */}
                     <div>
-                        <h4 className="font-semibold text-base text-white mb-4">
+                        <h4 className="text-white mb-4"
+                            style={{fontFamily: "Manrope, sans-serif", fontWeight: "500", fontSize: "18px"}}>
                             Service Areas
                         </h4>
-                        <p className="text-gray-400 text-sm mb-4 text-white">
+                        <p className="text-gray-400 mb-4 text-white"
+                           style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}>
                             Proudly serving families across Ohio.
                         </p>
-                        <p className="text-gray-400 text-sm leading-relaxed text-white">
+                        <p className="text-gray-400 leading-relaxed text-white"
+                           style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}>
                             We partner with Ohio Area Agencies on Aging and County Boards of Developmental Disabilities to provide comprehensive care services throughout the state.
                         </p>
                     </div>
 
                     {/* Join Us / Social */}
                     <div>
-                        <h4 className="font-semibold text-base text-white mb-4">
+                        <h4 className="text-white mb-4" style={{fontFamily: "Manrope, sans-serif", fontWeight: "700", fontSize: "18px"}}>
                             Join Us
                         </h4>
                         <div className="flex items-center gap-4">
@@ -133,13 +141,13 @@ export default function Footer() {
 
             {/* Bottom Bar */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <p className="text-white-500 text-sm">
+                    <p className="text-white-500" style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}>
                         © 2026 OhioCarePlus. All rights reserved.
                     </p>
                     <div className="flex items-center gap-6 text-sm text-gray-500">
-                        <a href="#" className="hover:text-white transition-colors text-white">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors text-white">Terms of Service</a>
-                        <a href="#" className="hover:text-white transition-colors text-white">Accessibility</a>
+                        <a href="#" className="hover:text-white transition-colors text-white" style={{fontFamily: "Manrope, sans-serif", fontWeight: "500", fontSize: "14px"}}>Privacy Policy</a>
+                        <a href="#" className="hover:text-white transition-colors text-white" style={{fontFamily: "Manrope, sans-serif", fontWeight: "500", fontSize: "14px"}}>Terms of Service</a>
+                        <a href="#" className="hover:text-white transition-colors text-white" style={{fontFamily: "Manrope, sans-serif", fontWeight: "500", fontSize: "14px"}}>Accessibility</a>
                     </div>
                 </div>
         </footer>

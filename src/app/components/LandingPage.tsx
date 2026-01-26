@@ -44,12 +44,12 @@ export default function LandingPage() {
                 <div
                     className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-[600px] lg:min-h-[700px]">
                     <div className="max-w-xl text-white py-20">
-                        <h1 className="leading-tight mb-6"
-                            style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "48px"}}>
+                        <h1 className="leading-tight mb-6 font-manrope text-6xl font-light"
+                            style={{ fontSize: "48px"}}>
                             Compassionate Home Care for Ohio Families
                         </h1>
-                        <p className="opacity-90 mb-8"
-                           style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "20px"}}>
+                        <p className="opacity-90 mb-8 font-manrope text-xl font-light"
+                           style={{ fontSize: "20px"}}>
                             Certified PASSPORT and DODD providers dedicated to independence, dignity, and specialized
                             support across Ohio.
                         </p>
@@ -90,8 +90,8 @@ export default function LandingPage() {
 
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-gray-900">Certified Ohio PASSPORT Provider</p>
-                                    <p className="text-sm text-gray-500">Trusted Senior Care Services</p>
+                                    <p className="font-semibold text-gray-900 font-manrope" style={{fontWeight: "600px", fontSize: "16px"}}>Certified Ohio PASSPORT Provider</p>
+                                    <p className="text-sm text-gray-500 font-manrope" style={{fontWeight: "400px", fontSize: "14px"}}>Trusted Senior Care Services</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-4">
@@ -113,8 +113,8 @@ export default function LandingPage() {
 
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-gray-900">DODD Certified Agency</p>
-                                    <p className="text-sm text-gray-500">Developmental Disabilities Specialists</p>
+                                    <p className="font-semibold text-gray-900 font-manrope" style={{fontWeight: "600px", fontSize: "16px"}}>DODD Certified Agency</p>
+                                    <p className="text-sm text-gray-500 font-manrope" style={{fontWeight: "400px", fontSize: "14px"}}>Developmental Disabilities Specialists</p>
                                 </div>
                             </div>
                         </div>
@@ -126,16 +126,16 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <span className="text-[#69B1FF] uppercase tracking-wide"
-                                  style={{fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "21px"}}>
+                            <span className="text-[#69B1FF] uppercase tracking-wide font-manrope font-light"
+                                  style={{ fontSize: "20px"}}>
                                 PASSPORT / SENIOR CARE
                             </span>
-                            <h2 className="mt-4 mb-6"
-                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "42px"}}>
+                            <h2 className=" text-gray-900 mt-4 mb-6 font-manrope font-light"
+                                style={{ fontSize: "48px"}}>
                                 Senior Home Care - PASSPORT Waiver
                             </h2>
-                            <p className="text-gray-600 mb-8"
-                               style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "16px"}}>
+                            <p className="text-gray-600 mb-8 font-manrope"
+                               style={{fontWeight: "400px", fontSize: "16px"}}>
                                 Helping seniors aged 60 and above remain safely in their homes. Our PASSPORT services
                                 support independence and peace of mind for families through compassionate, reliable
                                 care.
@@ -143,24 +143,21 @@ export default function LandingPage() {
                             <div className="grid grid-cols-2 gap-4 mb-8">
                                 <div className="flex items-center gap-3">
                                     <Home className="w-5 h-5 text-[#2563EB]"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Homemaking Services</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Home className="w-5 h-5 text-[#2563EB]"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Personal Care Assistance</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Heart className="w-5 h-5 text-[#2563EB]"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Respite Care</span>
@@ -168,8 +165,8 @@ export default function LandingPage() {
                             </div>
                             <button
                                 onClick={() => scrollToSection("contact")}
-                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg transition-colors"
-                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "14px"}}>
+                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg transition-colors font-manrope"
+                                style={{fontWeight: "500px", fontSize: "14px"}}>
                                 Learn About Passport Services
                             </button>
                         </div>
@@ -195,64 +192,58 @@ export default function LandingPage() {
                             />
                         </div>
                         <div className="order-1 lg:order-2">
-                            <span className="text-[#69B1FF] uppercase tracking-wide"
-                                  style={{fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "21px"}}>
+                            <span className="text-[#69B1FF] uppercase tracking-wide font-manrope"
+                                  style={{fontWeight: "400px", fontSize: "20px"}}>
                                 DODD & WAIVER SERVICES
                             </span>
-                            <h2 className=" text-gray-900 mt-4 mb-6"
-                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "42px"}}>
+                            <h2 className=" text-gray-900 mt-4 mb-6 font-manrope font-light"
+                                style={{ fontSize: "48px"}}>
                                 Developmental Disabilities Support
                             </h2>
-                            <p className="text-gray-600 mb-8"
-                               style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "16px"}}>
+                            <p className="text-gray-600 mb-8 font-manrope"
+                               style={{fontWeight: "400px", fontSize: "16px"}}>
                                 We provide specialized, person-centered services for individuals with developmental
                                 disabilities, empowering them to live, work, and thrive in their communities.
                             </p>
                             <div className="grid grid-cols-2 gap-4 mb-8">
                                 <div className="flex items-center gap-3">
                                     <Home className="w-5 h-5 text-[#2563EB]"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Homemaker / Personal Care</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Building2 className="w-5 h-5 text-green-600"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Vocational Habilitation</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Users className="w-5 h-5 text-[#2563EB]"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Supported Living</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Car className="w-5 h-5 text-green-600"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Transportation</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Heart className="w-5 h-5 text-[#2563EB]"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Respite Care</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <Headphones className="w-5 h-5 text-green-600"/>
-                                    <span className="text-gray-700" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Remote Support Services</span>
@@ -260,8 +251,8 @@ export default function LandingPage() {
                             </div>
                             <button
                                 onClick={() => scrollToSection("contact")}
-                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg transition-colors"
-                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "14px"}}
+                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg transition-colors font-manrope"
+                                style={{fontWeight: "500px", fontSize: "14px"}}
                             >
                                 Learn About DODD Services
                             </button>
@@ -269,16 +260,25 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
-
-            <section id="why-choose-us" className="py-20 lg:py-32 scroll-mt-20 bg-[#E6F4FF] ">
+            <div
+                style={{
+                    backgroundImage: "url('/src/assets/Bg.png')",
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
+            <section
+                id="why-choose-us"
+                className="py-20 lg:py-32 scroll-mt-20"
+            >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="mb-16">
-                        <h2 className=" text-gray-900 mb-4"
-                            style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "56px"}}>
+                        <h2 className=" text-gray-900 mb-4 font-manrope text-6xl font-light"
+                            style={{ fontSize: "60px"}}>
                             Why Choose Us
                         </h2>
-                        <p className="text-black "
-                           style={{fontFamily: "Manrope, sans-serif", fontWeight: "400px", fontSize: "24px"}}>
+                        <p className="text-black font-manrope font-light"
+                           style={{fontWeight: "400px", fontSize: "24px"}}>
                             Committed to excellence in every aspect of home care
                         </p>
                     </div>
@@ -296,13 +296,12 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className=" text-black mb-2"
+                                <h3 className=" text-black mb-2 font-manrope"
                                     style={{
-                                        fontFamily: "Manrope, sans-serif",
                                         fontWeight: "500px",
                                         fontSize: "24px"
                                     }}>Fully Compliant</h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-600 font-manrope" style={{fontWeight: "400px", fontSize: "16px"}}>
                                     EVV (Electronic Visit Verification) integrated for transparent, accurate billing.
                                 </p>
                             </div>
@@ -324,13 +323,12 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className=" text-black mb-2"
+                                <h3 className=" text-black mb-2 font-manrope"
                                     style={{
-                                        fontFamily: "Manrope, sans-serif",
                                         fontWeight: "500px",
                                         fontSize: "24px"
                                     }}>Vetted Caregivers</h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-600 font-manrope" style={{fontWeight: "400px", fontSize: "16px"}}>
                                     All caregivers complete comprehensive Ohio BCII & FBI background checks.
                                 </p>
                             </div>
@@ -350,13 +348,12 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className=" text-gray-900 mb-2"
+                                <h3 className=" text-gray-900 mb-2 font-manrope"
                                     style={{
-                                        fontFamily: "Manrope, sans-serif",
                                         fontWeight: "500px",
                                         fontSize: "24px"
                                     }}>Local Expertise</h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-600 font-manrope" style={{fontWeight: "400px", fontSize: "16px"}}>
                                     In-depth knowledge of Ohio Area Agencies on Aging (AAA) and County Boards of
                                     Developmental Disabilities.
                                 </p>
@@ -373,13 +370,12 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className=" text-gray-900 mb-2"
+                                <h3 className=" text-gray-900 mb-2 font-manrope"
                                     style={{
-                                        fontFamily: "Manrope, sans-serif",
                                         fontWeight: "500px",
                                         fontSize: "24px"
                                     }}>Care-First Approach</h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-600 font-manrope" style={{fontWeight: "400px", fontSize: "16px"}}>
                                     Personalized care plans designed around your specific waiver and individual needs.
                                 </p>
                             </div>
@@ -388,16 +384,15 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* 3-Step Care Process */}
-            <section className="py-20 lg:py-32 bg-gray-50">
+            <section className="py-20 lg:py-32 ">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="mb-16">
-                        <h2 className=" text-gray-900 mb-4"
-                            style={{fontFamily: "Manrope, sans-serif", fontWeight: "300px", fontSize: "56px"}}>
+                        <h2 className=" text-gray-900 mb-4 font-manrope font-light"
+                            style={{ fontSize: "60px"}}>
                             Our Simple 3-Step Care Process
                         </h2>
-                        <p className="text-gray-600 "
-                           style={{fontFamily: "Manrope, sans-serif", fontWeight: "500px", fontSize: "24px"}}>
+                        <p className="text-gray-600 font-manrope font-light"
+                           style={{fontSize: "24px"}}>
                             Getting started with quality care is easy
                         </p>
                     </div>
@@ -410,20 +405,18 @@ export default function LandingPage() {
                                     1
                                 </div>
                                 <div>
-                                    <h3 className="text-gray-900 mb-2"
+                                    <h3 className="text-gray-900 mb-2 font-manrope font-light"
                                         style={{
-                                            fontFamily: "Manrope, sans-serif",
-                                            fontWeight: "500",
-                                            fontSize: "20px"
+                                            fontSize: "24px"
                                         }}>Initial Contact</h3>
-                                    <p className="text-gray-600"
-                                       style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "15px"}}>
+                                    <p className="text-gray-600 font-manrope"
+                                       style={{fontWeight: "500", fontSize: "16px"}}>
                                         Call us or complete our online form to schedule a free consultation.
                                     </p>
                                 </div>
                                 {/* Horizontal dashed line from step 1 to step 2 */}
                                 <div
-                                    className="hidden md:block absolute top-6 left-full w-32 border-t-2 border-dashed border-gray-300"
+                                    className="hidden md:block absolute top-4 left-78 w-52 border-t-2 border-dashed border-gray-300"
                                     style={{marginLeft: '16px'}}/>
                             </div>
                             <div className="relative flex items-start gap-4">
@@ -432,14 +425,12 @@ export default function LandingPage() {
                                     2
                                 </div>
                                 <div>
-                                    <h3 className="text-gray-900 mb-2"
+                                    <h3 className="text-gray-900 mb-2 font-manrope font-light"
                                         style={{
-                                            fontFamily: "Manrope, sans-serif",
-                                            fontWeight: "500",
-                                            fontSize: "20px"
+                                            fontSize: "24px"
                                         }}>Care Coordination</h3>
-                                    <p className="text-gray-600"
-                                       style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "15px"}}>
+                                    <p className="text-gray-600 font-manrope"
+                                       style={{fontWeight: "500", fontSize: "16px"}}>
                                         We collaborate directly with your Case Manager or Service and Support
                                         Administrator (SSA) to authorize services.
                                     </p>
@@ -448,20 +439,18 @@ export default function LandingPage() {
                             <div className="hidden md:block"></div>
                             <div className="relative flex items-start gap-4">
                                 <div
-                                    className="hidden md:block absolute -top-8 left-6 h-8 border-l-2 border-dashed border-gray-300"/>
+                                    className="hidden md:block absolute -top-14 left-6 h-8 border-l-2 border-dashed border-gray-300"/>
                                 <div
                                     className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 bg-[#2563EB] text-white rounded-full text-xl font-bold z-10">
                                     3
                                 </div>
                                 <div>
-                                    <h3 className="text-gray-900 mb-2"
+                                    <h3 className="text-gray-900 mb-2 font-manrope font-light"
                                         style={{
-                                            fontFamily: "Manrope, sans-serif",
-                                            fontWeight: "500",
-                                            fontSize: "20px"
+                                            fontSize: "24px"
                                         }}>Matched Care</h3>
-                                    <p className="text-gray-600"
-                                       style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "15px"}}>
+                                    <p className="text-gray-600 font-manrope"
+                                       style={{fontWeight: "500", fontSize: "16px"}}>
                                         We thoughtfully match you with a caregiver who fits your needs, preferences, and
                                         personality.
                                     </p>
@@ -471,78 +460,72 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+</div>
             <section id="careers" className="py-16 lg:py-24 scroll-mt-20"
                      style={{background: 'linear-gradient(180deg, #2563EB 0%, #1E40AF 100%)'}}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10">
-                        <h2 className="text-white mb-4"
-                            style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "42px"}}>
+                        <h2 className="text-white mb-4 font-manrope font-light"
+                            style={{fontSize: "60px"}}>
                             Join Our Team of Care Professionals
                         </h2>
-                        <p className="text-white/80 max-w-2xl mx-auto"
-                           style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "16px"}}>
+                        <p className="text-white/80 max-w-2xl mx-auto font-manrope font-light"
+                           style={{ fontSize: "24px"}}>
                             We are growing and looking for compassionate, dedicated professionals to join our mission of
                             quality home care.
                         </p>
                     </div>
                     <div className="text-white rounded-2xl px-8 py-6 mb-8">
-                        <h3 className="text-white-900 mb-6"
-                            style={{fontFamily: "Manrope, sans-serif", fontWeight: "500", fontSize: "24px"}}>Now
+                        <h3 className="text-white-900 mb-6 font-manrope font-light"
+                            style={{ fontSize: "32px"}}>Now
                             Hiring</h3>
                         <div className="space-y-0">
                             {/* Job 1 */}
                             <div
                                 className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200">
                                 <div className="flex-1">
-                                    <h4 className="text-white-900" style={{
-                                        fontFamily: "Manrope, sans-serif",
-                                        fontWeight: "500",
-                                        fontSize: "16px"
+                                    <h4 className="text-white-900 font-manrope" style={{
+                                        fontWeight: "400",
+                                        fontSize: "18px"
                                     }}>State Tested Nursing Assistants (STNAs)</h4>
                                 </div>
                                 <div className="flex-1 md:text-center">
-                                    <p className="text-white-500" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <p className="text-white-500 font-manrope" style={{
                                         fontWeight: "400",
-                                        fontSize: "14px"
+                                        fontSize: "16px"
                                     }}>Contains job description</p>
                                 </div>
                                 <div className="flex-shrink-0 mt-3 md:mt-0">
                                     <button
-                                        className="border border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                                        className="border font-manrope border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
                                         style={{
-                                            fontFamily: "Manrope, sans-serif",
-                                            fontWeight: "500",
+                                            fontWeight: "400",
                                             fontSize: "14px",
                                         }}
                                     >
                                         Apply Now
                                     </button>
                                 </div>
-
                             </div>
                             {/* Job 2 */}
                             <div
                                 className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-[#B1B1B1]">
                                 <div className="flex-1">
-                                    <h4 className="text-white-900" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <h4 className="text-white-900 font-manrope" style={{
                                         fontWeight: "500",
-                                        fontSize: "16px"
+                                        fontSize: "18px"
                                     }}>Home Health Aides (HHAs)</h4>
                                 </div>
                                 <div className="flex-1 md:text-center">
-                                    <p className="text-white-500" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <p className="text-white-500 font-manrope" style={{
                                         fontWeight: "400",
-                                        fontSize: "14px"
+                                        fontSize: "16px"
                                     }}>Contains job description</p>
                                 </div>
                                 <div className="flex-shrink-0 mt-3 md:mt-0">
                                     <button
-                                        className="border border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                                        className="border font-manrope border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
                                         style={{
-                                            fontFamily: "Manrope, sans-serif",
                                             fontWeight: "500",
                                             fontSize: "14px",
                                         }}
@@ -555,24 +538,21 @@ export default function LandingPage() {
                             {/* Job 3 */}
                             <div className="flex flex-col md:flex-row md:items-center justify-between py-4">
                                 <div className="flex-1">
-                                    <h4 className="text-white-900" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <h4 className="text-white-900 font-manrope" style={{
                                         fontWeight: "500",
-                                        fontSize: "16px"
+                                        fontSize: "18px"
                                     }}>Direct Support Professionals (DSPs)</h4>
                                 </div>
                                 <div className="flex-1 md:text-center">
-                                    <p className="text-white-500" style={{
-                                        fontFamily: "Manrope, sans-serif",
+                                    <p className="text-white-500 font-manrope" style={{
                                         fontWeight: "400",
-                                        fontSize: "14px"
+                                        fontSize: "16px"
                                     }}>Contains job description</p>
                                 </div>
                                 <div className="flex-shrink-0 mt-3 md:mt-0">
                                     <button
-                                        className="border border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                                        className="border font-manrope border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
                                         style={{
-                                            fontFamily: "Manrope, sans-serif",
                                             fontWeight: "500",
                                             fontSize: "14px",
                                         }}
@@ -584,8 +564,8 @@ export default function LandingPage() {
                         </div>
                     </div>
                     <div className="bg-white/10 backdrop-blur-md rounded-2xl px-8 py-6" style={{marginBottom: "-96px"}}>
-                        <h3 className="text-white text-center mb-8"
-                            style={{fontFamily: "Manrope, sans-serif", fontWeight: "500", fontSize: "20px"}}>What We
+                        <h3 className="text-white text-center mb-8 font-manrope font-light"
+                            style={{ fontSize: "24px"}}>What We
                             Offer</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                             <div className="text-center">
@@ -593,10 +573,9 @@ export default function LandingPage() {
                                     className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
                                     <DollarSign className="w-6 h-6 text-white"/>
                                 </div>
-                                <p className="text-white" style={{
-                                    fontFamily: "Manrope, sans-serif",
+                                <p className="text-white font-manrope" style={{
                                     fontWeight: "500",
-                                    fontSize: "14px"
+                                    fontSize: "16px"
                                 }}>Competitive Pay</p>
                             </div>
                             <div className="text-center">
@@ -604,10 +583,9 @@ export default function LandingPage() {
                                     className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
                                     <Clock className="w-6 h-6 text-white"/>
                                 </div>
-                                <p className="text-white" style={{
-                                    fontFamily: "Manrope, sans-serif",
+                                <p className="text-white font-manrope" style={{
                                     fontWeight: "500",
-                                    fontSize: "14px"
+                                    fontSize: "16px"
                                 }}>Flexible Schedules</p>
                             </div>
                             <div className="text-center">
@@ -615,10 +593,9 @@ export default function LandingPage() {
                                     className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
                                     <TrendingUp className="w-6 h-6 text-white"/>
                                 </div>
-                                <p className="text-white" style={{
-                                    fontFamily: "Manrope, sans-serif",
+                                <p className="text-white font-manrope" style={{
                                     fontWeight: "500",
-                                    fontSize: "14px"
+                                    fontSize: "16px"
                                 }}>Career Growth</p>
                             </div>
                             <div className="text-center">
@@ -626,16 +603,15 @@ export default function LandingPage() {
                                     className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
                                     <Briefcase className="w-6 h-6 text-white"/>
                                 </div>
-                                <p className="text-white" style={{
-                                    fontFamily: "Manrope, sans-serif",
+                                <p className="text-white font-manrope" style={{
                                     fontWeight: "500",
-                                    fontSize: "14px"
+                                    fontSize: "16px"
                                 }}>Meaningful Work</p>
                             </div>
                         </div>
                         <div className="border-t border-white/30 my-6"></div>
-                        <p className="text-white/70 text-center mt-6"
-                           style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}>
+                        <p className="text-white/70 text-center mt-6 font-manrope"
+                           style={{fontWeight: "400", fontSize: "16px"}}>
                             Join a team that values your dedication and provides the support you need to make a real
                             difference in people's lives.
                         </p>
@@ -646,22 +622,21 @@ export default function LandingPage() {
             <section id="contact" className="py-20 lg:py-32 scroll-mt-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className=" text-gray-900 mb-4"
-                            style={{fontFamily: "Manrope, sans-serif", fontWeight: "500", fontSize: "56px"}}>
+                        <h2 className="text-gray-900 mb-4 text-6xl font-light text-[60px] font-manrope">
                             Get in Touch
                         </h2>
-                        <p className="text-gray-600 "
-                           style={{fontFamily: "Manrope, sans-serif", fontWeight: "300", fontSize: "24px"}}>
+                        <p className="text-gray-600 font-manrope"
+                           style={{fontWeight: "400", fontSize: "24px"}}>
                             We're here to answer your questions and help you get started with quality care
                         </p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-16">
                         <div>
-                            <h3 className=" text-gray-900 mb-2"
-                                style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "32px"}}>Request
+                            <h3 className=" text-gray-900 mb-2 font-manrope"
+                                style={{fontWeight: "400", fontSize: "30px"}}>Request
                                 a Free Consultation</h3>
-                            <p className="text-gray-500 mb-8">We'll get back to you within 24 hours</p>
+                            <p className="text-gray-500 mb-8 font-manrope" style={{fontWeight: "400", fontSize: "16px"}}>We'll get back to you within 24 hours</p>
 
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid grid-cols-2 gap-4">
@@ -738,7 +713,8 @@ export default function LandingPage() {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-medium py-4 rounded-lg transition-colors"
+                                    className="w-full font-manrope bg-[#2563EB] hover:bg-[#1d4ed8] text-white py-4 rounded-lg transition-colors"
+                                    style={{fontWeight: "500", fontSize: "14px"}}
                                 >
                                     Submit Request
                                 </button>
@@ -759,30 +735,80 @@ export default function LandingPage() {
                                 />
                             </div>
                             <div className="space-y-6">
-                                <div className="flex items-start gap-4">
-                                    <Phone className="w-6 h-6 text-gray-400 mt-1"/>
+                                {/* Phone */}
+                                <div className="grid grid-cols-[180px_1fr] gap-6 items-start">
+                                    <div className="flex items-center gap-3">
+                                        <Phone className="w-5 h-5 text-gray-500" />
+                                        <span
+                                            className="text-gray-900 font-manrope"
+                                            style={{fontSize: "14px" }}
+                                        >
+        Phone
+      </span>
+                                    </div>
+
                                     <div>
-                                        <p className="font-medium text-gray-900">Phone</p>
-                                        <p className="text-gray-600">380-235-7179</p>
+                                        <p
+                                            className="text-gray-700 font-manrope"
+                                            style={{fontSize: "14px" }}
+                                        >
+                                            380-235-7179
+                                        </p>
                                         <p className="text-sm text-gray-500">Available 24/7</p>
                                     </div>
                                 </div>
-                                <div className="flex items-start gap-4">
-                                    <Mail className="w-6 h-6 text-gray-400 mt-1"/>
+
+                                {/* Email */}
+                                <div className="grid grid-cols-[180px_1fr] gap-6 items-start">
+                                    <div className="flex items-center gap-3">
+                                        <Mail className="w-5 h-5 text-gray-500" />
+                                        <span
+                                            className="text-gray-900 font-manrope"
+                                            style={{fontSize: "14px" }}
+                                        >
+        Email
+      </span>
+                                    </div>
+
                                     <div>
-                                        <p className="font-medium text-gray-900">Email</p>
-                                        <p className="text-gray-600">info@abetterchoicecare.com</p>
-                                        <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
+                                        <p
+                                            className="text-gray-700 font-manrope"
+                                            style={{fontSize: "14px" }}
+                                        >
+                                            info@abetterchoicecare.com
+                                        </p>
+                                        <p className="text-sm text-gray-500">
+                                            We'll respond within 24 hours
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="flex items-start gap-4">
-                                    <MapPinned className="w-6 h-6 text-gray-400 mt-1"/>
+
+                                {/* Office Location */}
+                                <div className="grid grid-cols-[180px_1fr] gap-6 items-start">
+                                    <div className="flex items-center gap-3">
+                                        <MapPinned className="w-5 h-5 text-gray-500" />
+                                        <span
+                                            className=" text-gray-900 font-manrope"
+                                            style={{ fontSize: "14px" }}
+                                        >
+        Office Location
+      </span>
+                                    </div>
                                     <div>
-                                        <p className="font-medium text-gray-900">Office Location</p>
-                                        <p className="text-gray-600">2700 E Dublin-Granville Rd STE 2708 Columbus, OH
-                                            43231</p>
-                                        <a href="#" className="text-[#2563EB] text-sm hover:underline">Get Directions
-                                            →</a>
+                                        <p
+                                            className="text-gray-700 font-manrope"
+                                            style={{fontSize: "14px" }}
+                                        >
+                                            2700 E Dublin-Granville Rd STE 2708
+                                            <br />
+                                            Columbus, OH 43231
+                                        </p>
+                                        <a
+                                            href="#"
+                                            className="text-[#2563EB] text-sm hover:underline inline-block mt-1"
+                                        >
+                                            Get Directions →
+                                        </a>
                                     </div>
                                 </div>
                             </div>

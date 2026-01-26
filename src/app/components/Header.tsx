@@ -59,19 +59,39 @@ export default function Header() {
                                     <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 {servicesOpen && (
-                                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border py-2 z-50">
-                                        <button
-                                            onClick={() => scrollToSection("passport-services")}
-                                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                                        >
-                                            PASSPORT Services
-                                        </button>
-                                        <button
-                                            onClick={() => scrollToSection("dodd-services")}
-                                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                                        >
-                                            DODD Services
-                                        </button>
+                                    <div className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-xl shadow-xl border p-6 z-50">
+                                        <div className="grid grid-cols-2 gap-6">
+                                            {/* Passport Service */}
+                                            <button
+                                                onClick={() => scrollToSection("passport-services")}
+                                                className="text-left hover:bg-gray-50 rounded-lg p-3 transition-colors text-black"
+                                            >
+                                                <h4 className="text-gray-900 text-base mb-1" style={{fontSize: "14px", fontWeight:"500"}}>Passport Service</h4>
+                                                <p className="text-gray-500 text-sm leading-relaxed" style={{fontSize: "14px", fontWeight:"300"}}>
+                                                    Helping seniors aged 60 and above remain safely in their homes.
+                                                </p>
+                                            </button>
+                                            {/* DODD */}
+                                            <button
+                                                onClick={() => scrollToSection("dodd-services")}
+                                                className="text-left hover:bg-gray-50 rounded-lg p-3 transition-colors"
+                                            >
+                                                <h4 className="text-gray-900 text-base mb-1" style={{fontSize: "14px", fontWeight:"500"}}>DODD</h4>
+                                                <p className="text-gray-500 text-sm leading-relaxed" style={{fontSize: "14px", fontWeight:"300"}}>
+                                                    We provide specialized, person-centered services for individuals.
+                                                </p>
+                                            </button>
+                                            {/* Private Pay */}
+                                            <button
+                                                onClick={() => scrollToSection("contact")}
+                                                className="text-left hover:bg-gray-50 rounded-lg p-3 transition-colors"
+                                            >
+                                                <h4 className="text-gray-900 text-base mb-1" style={{fontSize: "14px", fontWeight:"500"}}>Private Pay</h4>
+                                                <p className="text-gray-500 text-sm leading-relaxed" style={{fontSize: "14px", fontWeight:"300"}}>
+                                                    We provide specialized, person-centered services for individuals....
+                                                </p>
+                                            </button>
+                                        </div>
                                     </div>
                                 )}
                             </div>
