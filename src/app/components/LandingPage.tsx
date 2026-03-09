@@ -1111,12 +1111,7 @@ export default function LandingPage() {
                                             fontSize: "18px"
                                         }}>{job.title}</h4>
                                     </div>
-                                    <div className="flex-1 md:text-center">
-                                        <p className="text-white-500 font-manrope" style={{
-                                            fontWeight: "400",
-                                            fontSize: "16px"
-                                        }}>Contains job description</p>
-                                    </div>
+
                                     <div className="flex-shrink-0 mt-3 md:mt-0 flex items-center gap-3">
                                         <button
                                             type="button"
