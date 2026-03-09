@@ -326,115 +326,162 @@ export default function LandingPage() {
             </section>
 
             <Dialog open={isJobDescriptionOpen} onOpenChange={setIsJobDescriptionOpen}>
-                <DialogContent className="max-w-4xl p-0 overflow-hidden">
-                    <div className="p-8">
-                        <DialogHeader>
-                            <DialogTitle className="font-manrope" style={{ fontWeight: "500", fontSize: "32px" }}>
-                                {activeJob?.title || "Job Description"}
-                            </DialogTitle>
-                            <DialogDescription className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
-                                {activeJob?.subtitle || ""}
-                            </DialogDescription>
-                        </DialogHeader>
-
-                        {activeJob ? (
-                            <div className="mt-6">
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-600">
-                                    <div className="flex items-center gap-2">
-                                        <MapPin className="w-4 h-4" />
-                                        <span className="font-manrope" style={{ fontSize: "14px" }}>
-                                            {activeJob.meta.locations}
-                                        </span>
+                <DialogContent className="max-w-5xl max-h-[calc(100vh-3rem)] p-0 overflow-hidden border-0 shadow-2xl rounded-2xl">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/10 via-white to-transparent" />
+                        <div className="relative p-8">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-12 h-12 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shadow-lg shadow-blue-500/20">
+                                        <Briefcase className="w-6 h-6" />
                                     </div>
-                                    <div className="flex items-center gap-2">
-                                        <Briefcase className="w-4 h-4" />
-                                        <span className="font-manrope" style={{ fontSize: "14px" }}>
-                                            {activeJob.meta.schedule}
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <Clock className="w-4 h-4" />
-                                        <span className="font-manrope" style={{ fontSize: "14px" }}>
-                                            {activeJob.meta.posted}
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <DollarSign className="w-4 h-4" />
-                                        <span className="font-manrope" style={{ fontSize: "14px" }}>
-                                            {activeJob.meta.pay}
-                                        </span>
+                                    <div>
+                                        <DialogHeader className="gap-2">
+                                            <DialogTitle className="font-manrope tracking-tight" style={{ fontWeight: "600", fontSize: "30px" }}>
+                                                {activeJob?.title || "Job Description"}
+                                            </DialogTitle>
+                                            <DialogDescription className="font-manrope text-gray-600" style={{ fontWeight: "400", fontSize: "15px" }}>
+                                                {activeJob?.subtitle || ""}
+                                            </DialogDescription>
+                                        </DialogHeader>
                                     </div>
                                 </div>
 
-                                <div className="mt-8 space-y-8 max-h-[65vh] overflow-y-auto pr-2">
+                                <button
+                                    type="button"
+                                    onClick={() => (activeJob ? (setIsJobDescriptionOpen(false), openApply(activeJob.id)) : null)}
+                                    className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded-xl transition-colors font-manrope shadow-lg shadow-blue-500/20"
+                                    style={{ fontWeight: "500", fontSize: "14px" }}
+                                >
+                                    Apply Now
+                                </button>
+                            </div>
+
+                            {activeJob ? (
+                                <div className="mt-6 flex flex-wrap gap-2">
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700">
+                                        <MapPin className="w-4 h-4" />
+                                        <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.meta.locations}</span>
+                                    </span>
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700">
+                                        <Briefcase className="w-4 h-4" />
+                                        <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.meta.schedule}</span>
+                                    </span>
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700">
+                                        <Clock className="w-4 h-4" />
+                                        <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.meta.posted}</span>
+                                    </span>
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700">
+                                        <DollarSign className="w-4 h-4" />
+                                        <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.meta.pay}</span>
+                                    </span>
+                                </div>
+                            ) : null}
+                        </div>
+                    </div>
+
+                    {activeJob ? (
+                        <div className="px-8 pb-8">
+                            <div className="rounded-2xl border border-gray-200 bg-white shadow-sm">
+                                <div className="max-h-[65vh] overflow-y-auto p-6 sm:p-8 space-y-8">
                                     <div>
-                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "20px" }}>
+                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "600", fontSize: "18px" }}>
                                             About the Role
                                         </h4>
-                                        <p className="text-gray-600 mt-3 font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
+                                        <p className="text-gray-600 mt-3 font-manrope leading-relaxed" style={{ fontWeight: "400", fontSize: "15px" }}>
                                             {activeJob.about}
                                         </p>
                                     </div>
 
-                                    <div>
-                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "20px" }}>
-                                            Key Responsibilities
-                                        </h4>
-                                        <ul className="list-disc pl-5 mt-3 space-y-2 text-gray-600">
-                                            {activeJob.responsibilities.map((item) => (
-                                                <li key={item} className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
+                                    <div className="grid md:grid-cols-2 gap-8">
+                                        <div>
+                                            <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "600", fontSize: "18px" }}>
+                                                Key Responsibilities
+                                            </h4>
+                                            <ul className="mt-3 space-y-2">
+                                                {activeJob.responsibilities.map((item) => (
+                                                    <li key={item} className="flex items-start gap-3 text-gray-600">
+                                                        <span className="mt-1.5 inline-flex w-2 h-2 rounded-full bg-[#2563EB]" />
+                                                        <span className="font-manrope" style={{ fontWeight: "400", fontSize: "15px" }}>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "600", fontSize: "18px" }}>
+                                                Requirements
+                                            </h4>
+                                            <ul className="mt-3 space-y-2">
+                                                {activeJob.requirements.map((item) => (
+                                                    <li key={item} className="flex items-start gap-3 text-gray-600">
+                                                        <span className="mt-1.5 inline-flex w-2 h-2 rounded-full bg-green-600" />
+                                                        <span className="font-manrope" style={{ fontWeight: "400", fontSize: "15px" }}>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     </div>
 
                                     <div>
-                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "20px" }}>
-                                            Requirements
-                                        </h4>
-                                        <ul className="list-disc pl-5 mt-3 space-y-2 text-gray-600">
-                                            {activeJob.requirements.map((item) => (
-                                                <li key={item} className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    <div>
-                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "20px" }}>
+                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "600", fontSize: "18px" }}>
                                             Qualifications
                                         </h4>
-                                        <ul className="list-disc pl-5 mt-3 space-y-2 text-gray-600">
+                                        <div className="mt-3 grid sm:grid-cols-2 gap-3">
                                             {activeJob.qualifications.map((item) => (
-                                                <li key={item} className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
-                                                    {item}
-                                                </li>
+                                                <div key={item} className="flex items-start gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+                                                    <CheckCircle className="w-5 h-5 text-[#2563EB] mt-0.5" />
+                                                    <span className="text-gray-700 font-manrope" style={{ fontWeight: "400", fontSize: "14px" }}>{item}</span>
+                                                </div>
                                             ))}
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        ) : null}
-                    </div>
+                        </div>
+                    ) : null}
                 </DialogContent>
             </Dialog>
 
             <Dialog open={isApplyOpen} onOpenChange={setIsApplyOpen}>
-                <DialogContent className="max-w-4xl p-0 overflow-hidden">
-                    <div className="p-8">
-                        <DialogHeader>
-                            <DialogTitle className="font-manrope" style={{ fontWeight: "500", fontSize: "28px" }}>
-                                Submit Your Application
-                            </DialogTitle>
-                            <DialogDescription className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
-                                Fill out the form below to apply for this position. All fields marked with * are required.
-                            </DialogDescription>
-                        </DialogHeader>
+                <DialogContent className="max-w-5xl max-h-[calc(100vh-3rem)] p-0 overflow-hidden border-0 shadow-2xl rounded-2xl">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/10 via-white to-transparent" />
+                        <div className="relative p-8">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+                                <div>
+                                    <DialogHeader className="gap-2">
+                                        <DialogTitle className="font-manrope tracking-tight" style={{ fontWeight: "600", fontSize: "28px" }}>
+                                            Submit Your Application
+                                        </DialogTitle>
+                                        <DialogDescription className="font-manrope text-gray-600" style={{ fontWeight: "400", fontSize: "15px" }}>
+                                            Fill out the form below to apply for this position. All fields marked with * are required.
+                                        </DialogDescription>
+                                        {activeJob?.title ? (
+                                            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700 w-fit">
+                                                <Briefcase className="w-4 h-4" />
+                                                <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.title}</span>
+                                            </div>
+                                        ) : null}
+                                    </DialogHeader>
+                                </div>
 
-                        <div className="mt-6 max-h-[70vh] overflow-y-auto pr-2">
-                            <form onSubmit={submitApplication} className="space-y-10">
+                                <div className="flex items-center gap-3">
+                                    <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-white/70 border border-gray-200">
+                                        <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                                        <span className="text-gray-700 font-manrope" style={{ fontSize: "13px" }}>
+                                            Secure submission
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="px-8 pb-8">
+                        <div className="rounded-2xl border border-gray-200 bg-white shadow-sm">
+                            <div className="max-h-[70vh] overflow-y-auto p-6 sm:p-8">
+                                <form onSubmit={submitApplication} className="space-y-10">
                                 <div>
                                     <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "18px" }}>
                                         Personal Information
@@ -609,21 +656,24 @@ export default function LandingPage() {
                                         Resume / CV *
                                     </h4>
                                     <div className="border-t border-gray-200 mt-3 pt-6">
-                                        <label className="block w-full border-2 border-dashed border-gray-200 rounded-xl p-10 text-center bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors">
+                                        <label className="block w-full border-2 border-dashed border-gray-200 rounded-2xl p-10 text-center bg-gradient-to-b from-gray-50 to-white cursor-pointer hover:bg-gray-50 transition-colors">
                                             <input
                                                 type="file"
                                                 className="hidden"
                                                 accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
                                                 onChange={(e) => handleResumeChange(e.target.files?.[0] ?? null)}
                                             />
-                                            <div className="text-gray-500 font-manrope" style={{ fontSize: "14px" }}>
-                                                {resumeFile ? resumeFile.name : "Click to upload or drag and drop"}
+                                            <div className="w-12 h-12 rounded-xl bg-[#2563EB]/10 text-[#2563EB] flex items-center justify-center mx-auto mb-4">
+                                                <Briefcase className="w-6 h-6" />
                                             </div>
-                                            <div className="text-gray-400 font-manrope mt-2" style={{ fontSize: "12px" }}>
-                                                Max. File Size: 3MB
+                                            <div className="text-gray-800 font-manrope" style={{ fontSize: "14px", fontWeight: 500 }}>
+                                                {resumeFile ? resumeFile.name : "Upload your Resume / CV"}
                                             </div>
-                                            <div className="mt-5">
-                                                <span className="inline-flex items-center justify-center bg-[#2563EB] text-white px-6 py-2 rounded-lg font-manrope" style={{ fontSize: "14px" }}>
+                                            <div className="text-gray-500 font-manrope mt-1" style={{ fontSize: "13px" }}>
+                                                Drag and drop, or click to browse. Max 3MB.
+                                            </div>
+                                            <div className="mt-6">
+                                                <span className="inline-flex items-center justify-center bg-[#2563EB] text-white px-6 py-2.5 rounded-xl font-manrope shadow-lg shadow-blue-500/20" style={{ fontSize: "14px" }}>
                                                     Browse file
                                                 </span>
                                             </div>
@@ -675,14 +725,15 @@ export default function LandingPage() {
                                     type="submit"
                                     disabled={applyStatus === "submitting"}
                                     className={
-                                        "w-full bg-[#2563EB] text-white py-4 rounded-lg transition-colors font-manrope " +
+                                        "w-full bg-[#2563EB] text-white py-4 rounded-2xl transition-colors font-manrope shadow-lg shadow-blue-500/20 " +
                                         (applyStatus === "submitting" ? "opacity-70" : "hover:bg-[#1d4ed8]")
                                     }
                                     style={{ fontWeight: "500", fontSize: "14px" }}
                                 >
                                     {applyStatus === "submitting" ? "Submitting..." : "Submit Application"}
                                 </button>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </DialogContent>
