@@ -5,6 +5,14 @@ import {
     DollarSign, Phone, Mail, MapPinned
 } from "lucide-react";
 
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "./ui/dialog";
+
 import heroImage from "../../assets/heromain.png";
 import seniorCareImage from "../../assets/picture.png";
 import doddImage from "../../assets/picture2.png";
@@ -19,6 +27,143 @@ export default function LandingPage() {
         message: ""
     });
 
+    const jobs = [
+        {
+            id: "stna",
+            title: "State Tested Nursing Assistant (STNA)",
+            subtitle: "Certified Nursing Care",
+            meta: {
+                locations: "Multiple Locations Available",
+                schedule: "Full-time / Part-time",
+                posted: "Posted 2 days ago",
+                pay: "$16 - $22/hour",
+            },
+            about:
+                "We are seeking compassionate State Tested Nursing Assistants to provide quality care to our clients in their homes. As an STNA, you will play a crucial role in supporting patients with their daily living activities while maintaining their dignity and independence.",
+            responsibilities: [
+                "Monitor and record vital signs (temperature, blood pressure, pulse, respiration)",
+                "Assist patients with activities of daily living (bathing, dressing, grooming, toileting)",
+                "Provide medication reminders and ensure compliance with care plans",
+                "Assist with mobility and transfer techniques",
+                "Maintain accurate documentation of patient care and report changes to nursing staff",
+                "Ensure a safe and clean environment for patients",
+                "Provide emotional support and companionship to patients and families",
+            ],
+            requirements: [
+                "Valid State Tested Nursing Assistant (STNA) certification in your state",
+                "Current CPR and First Aid certification",
+                "High school diploma or equivalent",
+                "1+ years of experience preferred (new graduates welcome)",
+                "Reliable transportation and valid driver's license",
+                "Ability to lift up to 50 pounds and perform physical care tasks",
+                "Clear background check and drug screening",
+            ],
+            qualifications: [
+                "Excellent communication and interpersonal skills",
+                "Compassionate and patient-centered approach to care",
+                "Strong attention to detail and observation skills",
+                "Ability to work independently and as part of a healthcare team",
+                "Cultural sensitivity and respect for diversity",
+                "Flexible schedule including evenings, weekends, and holidays",
+            ],
+        },
+        {
+            id: "hha",
+            title: "Home Health Aide (HHA)",
+            subtitle: "In-Home Support",
+            meta: {
+                locations: "Multiple Locations Available",
+                schedule: "Full-time / Part-time",
+                posted: "Posted recently",
+                pay: "Competitive Pay",
+            },
+            about:
+                "We are hiring Home Health Aides to provide personal care and supportive services that help clients live safely and comfortably at home.",
+            responsibilities: [
+                "Assist with personal hygiene and daily living activities",
+                "Light housekeeping and meal preparation",
+                "Support mobility and safe transfers",
+                "Provide companionship and emotional support",
+                "Document care and communicate changes to the care team",
+            ],
+            requirements: [
+                "High school diploma or equivalent",
+                "CPR/First Aid preferred",
+                "Reliable transportation and valid driver's license",
+                "Clear background check and drug screening",
+            ],
+            qualifications: [
+                "Empathy, patience, and professionalism",
+                "Good communication skills",
+                "Comfort working independently in client homes",
+            ],
+        },
+        {
+            id: "dsp",
+            title: "Direct Support Professional (DSP)",
+            subtitle: "Developmental Disabilities Support",
+            meta: {
+                locations: "Multiple Locations Available",
+                schedule: "Full-time / Part-time",
+                posted: "Posted recently",
+                pay: "Competitive Pay",
+            },
+            about:
+                "We are seeking Direct Support Professionals to assist individuals with developmental disabilities with daily routines, community participation, and skill-building.",
+            responsibilities: [
+                "Support daily routines and personal care as needed",
+                "Assist with community outings and transportation",
+                "Encourage independence and skill-building",
+                "Maintain a safe environment and follow support plans",
+                "Document services and communicate with the care team",
+            ],
+            requirements: [
+                "High school diploma or equivalent",
+                "Valid driver's license and reliable transportation",
+                "Clear background check and drug screening",
+            ],
+            qualifications: [
+                "Positive attitude and strong work ethic",
+                "Excellent communication skills",
+                "Ability to follow protocols and support plans",
+            ],
+        },
+    ] as const;
+
+    const [activeJobId, setActiveJobId] = useState<(typeof jobs)[number]["id"] | null>(null);
+    const activeJob = jobs.find((j) => j.id === activeJobId) ?? null;
+
+    const [isJobDescriptionOpen, setIsJobDescriptionOpen] = useState(false);
+    const [isApplyOpen, setIsApplyOpen] = useState(false);
+
+    const [applicationData, setApplicationData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        streetAddress: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        certificationNumber: "",
+        certificationExpiryDate: "",
+        yearsOfExperience: "",
+        availability: "",
+        interestReason: "",
+        professionalReferences: "",
+        consentBackground: false,
+        consentPersonalData: false,
+    });
+
+    const [resumeFile, setResumeFile] = useState<{
+        name: string;
+        type: string;
+        base64: string;
+    } | null>(null);
+
+    const [applyStatus, setApplyStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+    const [applyError, setApplyError] = useState<string>("");
+
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
         if (!el) return;
@@ -28,6 +173,115 @@ export default function LandingPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("Form submitted:", formData);
+    };
+
+    const openJobDescription = (jobId: (typeof jobs)[number]["id"]) => {
+        setActiveJobId(jobId);
+        setIsJobDescriptionOpen(true);
+    };
+
+    const openApply = (jobId: (typeof jobs)[number]["id"]) => {
+        setActiveJobId(jobId);
+        setApplyStatus("idle");
+        setApplyError("");
+        setIsApplyOpen(true);
+    };
+
+    const handleResumeChange = async (file: File | null) => {
+        if (!file) {
+            setResumeFile(null);
+            return;
+        }
+
+        if (file.size > 3 * 1024 * 1024) {
+            setApplyError("Max file size is 3MB");
+            setResumeFile(null);
+            return;
+        }
+
+        const base64 = await new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(String(reader.result || ""));
+            reader.onerror = () => reject(new Error("Failed to read file"));
+            reader.readAsDataURL(file);
+        });
+
+        setResumeFile({ name: file.name, type: file.type || "application/octet-stream", base64 });
+    };
+
+    const submitApplication = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setApplyError("");
+
+        if (!activeJob) {
+            setApplyError("Please select a job.");
+            return;
+        }
+
+        if (!applicationData.firstName.trim() || !applicationData.lastName.trim()) {
+            setApplyError("First name and last name are required.");
+            return;
+        }
+
+        if (!applicationData.email.trim() || !applicationData.phone.trim()) {
+            setApplyError("Email and phone number are required.");
+            return;
+        }
+
+        if (!applicationData.streetAddress.trim() || !applicationData.city.trim() || !applicationData.state.trim() || !applicationData.zipCode.trim()) {
+            setApplyError("Address fields are required.");
+            return;
+        }
+
+        if (!applicationData.certificationNumber.trim() || !applicationData.certificationExpiryDate.trim()) {
+            setApplyError("Certification number and expiry date are required.");
+            return;
+        }
+
+        if (!applicationData.yearsOfExperience.trim() || !applicationData.availability.trim()) {
+            setApplyError("Years of experience and availability are required.");
+            return;
+        }
+
+        if (!applicationData.interestReason.trim()) {
+            setApplyError("Please tell us why you're interested in this position.");
+            return;
+        }
+
+        if (!resumeFile) {
+            setApplyError("Resume / CV is required.");
+            return;
+        }
+
+        if (!applicationData.consentBackground || !applicationData.consentPersonalData) {
+            setApplyError("Please check the required consent boxes.");
+            return;
+        }
+
+        setApplyStatus("submitting");
+
+        try {
+            const res = await fetch("/api/job-application", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    jobId: activeJob.id,
+                    jobTitle: activeJob.title,
+                    ...applicationData,
+                    resumeFile,
+                }),
+            });
+
+            if (!res.ok) {
+                const text = await res.text();
+                throw new Error(text || "Failed to submit application");
+            }
+
+            setApplyStatus("success");
+        } catch (err: any) {
+            setApplyStatus("error");
+            setApplyError(err?.message ? String(err.message) : "Failed to submit application");
+        }
     };
 
     return (
@@ -70,6 +324,369 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
+            <Dialog open={isJobDescriptionOpen} onOpenChange={setIsJobDescriptionOpen}>
+                <DialogContent className="max-w-4xl p-0 overflow-hidden">
+                    <div className="p-8">
+                        <DialogHeader>
+                            <DialogTitle className="font-manrope" style={{ fontWeight: "500", fontSize: "32px" }}>
+                                {activeJob?.title || "Job Description"}
+                            </DialogTitle>
+                            <DialogDescription className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
+                                {activeJob?.subtitle || ""}
+                            </DialogDescription>
+                        </DialogHeader>
+
+                        {activeJob ? (
+                            <div className="mt-6">
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-600">
+                                    <div className="flex items-center gap-2">
+                                        <MapPin className="w-4 h-4" />
+                                        <span className="font-manrope" style={{ fontSize: "14px" }}>
+                                            {activeJob.meta.locations}
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Briefcase className="w-4 h-4" />
+                                        <span className="font-manrope" style={{ fontSize: "14px" }}>
+                                            {activeJob.meta.schedule}
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Clock className="w-4 h-4" />
+                                        <span className="font-manrope" style={{ fontSize: "14px" }}>
+                                            {activeJob.meta.posted}
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <DollarSign className="w-4 h-4" />
+                                        <span className="font-manrope" style={{ fontSize: "14px" }}>
+                                            {activeJob.meta.pay}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div className="mt-8 space-y-8 max-h-[65vh] overflow-y-auto pr-2">
+                                    <div>
+                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "20px" }}>
+                                            About the Role
+                                        </h4>
+                                        <p className="text-gray-600 mt-3 font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
+                                            {activeJob.about}
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "20px" }}>
+                                            Key Responsibilities
+                                        </h4>
+                                        <ul className="list-disc pl-5 mt-3 space-y-2 text-gray-600">
+                                            {activeJob.responsibilities.map((item) => (
+                                                <li key={item} className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "20px" }}>
+                                            Requirements
+                                        </h4>
+                                        <ul className="list-disc pl-5 mt-3 space-y-2 text-gray-600">
+                                            {activeJob.requirements.map((item) => (
+                                                <li key={item} className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "20px" }}>
+                                            Qualifications
+                                        </h4>
+                                        <ul className="list-disc pl-5 mt-3 space-y-2 text-gray-600">
+                                            {activeJob.qualifications.map((item) => (
+                                                <li key={item} className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : null}
+                    </div>
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={isApplyOpen} onOpenChange={setIsApplyOpen}>
+                <DialogContent className="max-w-4xl p-0 overflow-hidden">
+                    <div className="p-8">
+                        <DialogHeader>
+                            <DialogTitle className="font-manrope" style={{ fontWeight: "500", fontSize: "28px" }}>
+                                Submit Your Application
+                            </DialogTitle>
+                            <DialogDescription className="font-manrope" style={{ fontWeight: "400", fontSize: "16px" }}>
+                                Fill out the form below to apply for this position. All fields marked with * are required.
+                            </DialogDescription>
+                        </DialogHeader>
+
+                        <div className="mt-6 max-h-[70vh] overflow-y-auto pr-2">
+                            <form onSubmit={submitApplication} className="space-y-10">
+                                <div>
+                                    <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "18px" }}>
+                                        Personal Information
+                                    </h4>
+                                    <div className="border-t border-gray-200 mt-3 pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                            <input
+                                                type="text"
+                                                placeholder="John"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.firstName}
+                                                onChange={(e) => setApplicationData({ ...applicationData, firstName: e.target.value })}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Doe"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.lastName}
+                                                onChange={(e) => setApplicationData({ ...applicationData, lastName: e.target.value })}
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                            <input
+                                                type="email"
+                                                placeholder="john.doe@example.com"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.email}
+                                                onChange={(e) => setApplicationData({ ...applicationData, email: e.target.value })}
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                                            <input
+                                                type="tel"
+                                                placeholder="+1 (555) 123-4567"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.phone}
+                                                onChange={(e) => setApplicationData({ ...applicationData, phone: e.target.value })}
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Street Address *</label>
+                                            <input
+                                                type="text"
+                                                placeholder="123 Main Street"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.streetAddress}
+                                                onChange={(e) => setApplicationData({ ...applicationData, streetAddress: e.target.value })}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">City *</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Columbus"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.city}
+                                                onChange={(e) => setApplicationData({ ...applicationData, city: e.target.value })}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">State *</label>
+                                            <input
+                                                type="text"
+                                                placeholder="OH"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.state}
+                                                onChange={(e) => setApplicationData({ ...applicationData, state: e.target.value })}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">ZIP Code *</label>
+                                            <input
+                                                type="text"
+                                                placeholder="43085"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.zipCode}
+                                                onChange={(e) => setApplicationData({ ...applicationData, zipCode: e.target.value })}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "18px" }}>
+                                        Professional Information
+                                    </h4>
+                                    <div className="border-t border-gray-200 mt-3 pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Certification Number *</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Enter your certification number"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.certificationNumber}
+                                                onChange={(e) => setApplicationData({ ...applicationData, certificationNumber: e.target.value })}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Certification Expiry Date *</label>
+                                            <input
+                                                type="date"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.certificationExpiryDate}
+                                                onChange={(e) => setApplicationData({ ...applicationData, certificationExpiryDate: e.target.value })}
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Years of Experience *</label>
+                                            <select
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.yearsOfExperience}
+                                                onChange={(e) => setApplicationData({ ...applicationData, yearsOfExperience: e.target.value })}
+                                            >
+                                                <option value="">Select years of experience</option>
+                                                <option value="0-1">0-1</option>
+                                                <option value="1-3">1-3</option>
+                                                <option value="3-5">3-5</option>
+                                                <option value="5+">5+</option>
+                                            </select>
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Availability *</label>
+                                            <select
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                                value={applicationData.availability}
+                                                onChange={(e) => setApplicationData({ ...applicationData, availability: e.target.value })}
+                                            >
+                                                <option value="">Select your availability</option>
+                                                <option value="days">Days</option>
+                                                <option value="evenings">Evenings</option>
+                                                <option value="nights">Nights</option>
+                                                <option value="weekends">Weekends</option>
+                                                <option value="flexible">Flexible</option>
+                                            </select>
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Why are you interested in this position? *</label>
+                                            <textarea
+                                                rows={4}
+                                                placeholder="Tell us why you'd be a great fit for this role and what motivates you..."
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent resize-none"
+                                                value={applicationData.interestReason}
+                                                onChange={(e) => setApplicationData({ ...applicationData, interestReason: e.target.value })}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "18px" }}>
+                                        Professional References
+                                    </h4>
+                                    <div className="border-t border-gray-200 mt-3 pt-6">
+                                        <textarea
+                                            rows={3}
+                                            placeholder="Please provide at least 2 professional references with name, relationship, phone, and email"
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent resize-none"
+                                            value={applicationData.professionalReferences}
+                                            onChange={(e) => setApplicationData({ ...applicationData, professionalReferences: e.target.value })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "500", fontSize: "18px" }}>
+                                        Resume / CV *
+                                    </h4>
+                                    <div className="border-t border-gray-200 mt-3 pt-6">
+                                        <label className="block w-full border-2 border-dashed border-gray-200 rounded-xl p-10 text-center bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors">
+                                            <input
+                                                type="file"
+                                                className="hidden"
+                                                accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+                                                onChange={(e) => handleResumeChange(e.target.files?.[0] ?? null)}
+                                            />
+                                            <div className="text-gray-500 font-manrope" style={{ fontSize: "14px" }}>
+                                                {resumeFile ? resumeFile.name : "Click to upload or drag and drop"}
+                                            </div>
+                                            <div className="text-gray-400 font-manrope mt-2" style={{ fontSize: "12px" }}>
+                                                Max. File Size: 3MB
+                                            </div>
+                                            <div className="mt-5">
+                                                <span className="inline-flex items-center justify-center bg-[#2563EB] text-white px-6 py-2 rounded-lg font-manrope" style={{ fontSize: "14px" }}>
+                                                    Browse file
+                                                </span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <label className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                        <input
+                                            type="checkbox"
+                                            className="mt-1"
+                                            checked={applicationData.consentBackground}
+                                            onChange={(e) => setApplicationData({ ...applicationData, consentBackground: e.target.checked })}
+                                        />
+                                        <span className="text-gray-700 font-manrope" style={{ fontSize: "14px" }}>
+                                            I consent to a background check and drug screening *
+                                        </span>
+                                    </label>
+                                    <label className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                        <input
+                                            type="checkbox"
+                                            className="mt-1"
+                                            checked={applicationData.consentPersonalData}
+                                            onChange={(e) => setApplicationData({ ...applicationData, consentPersonalData: e.target.checked })}
+                                        />
+                                        <span className="text-gray-700 font-manrope" style={{ fontSize: "14px" }}>
+                                            <span>I consent to the processing of my personal data *</span>
+                                            <span className="block text-gray-500 mt-1" style={{ fontSize: "12px" }}>
+                                                By submitting this application, you agree to our privacy policy and consent to the processing of your personal data for recruitment purposes.
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                {applyError ? (
+                                    <div className="text-red-600 font-manrope" style={{ fontSize: "14px" }}>
+                                        {applyError}
+                                    </div>
+                                ) : null}
+
+                                {applyStatus === "success" ? (
+                                    <div className="text-green-600 font-manrope" style={{ fontSize: "14px" }}>
+                                        Application submitted successfully.
+                                    </div>
+                                ) : null}
+
+                                <button
+                                    type="submit"
+                                    disabled={applyStatus === "submitting"}
+                                    className={
+                                        "w-full bg-[#2563EB] text-white py-4 rounded-lg transition-colors font-manrope " +
+                                        (applyStatus === "submitting" ? "opacity-70" : "hover:bg-[#1d4ed8]")
+                                    }
+                                    style={{ fontWeight: "500", fontSize: "14px" }}
+                                >
+                                    {applyStatus === "submitting" ? "Submitting..." : "Submit Application"}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </DialogContent>
+            </Dialog>
 
             <div className="relative z-10 -mt-16 mb-8">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -480,87 +1097,52 @@ export default function LandingPage() {
                             style={{ fontSize: "32px"}}>Now
                             Hiring</h3>
                         <div className="space-y-0">
-                            {/* Job 1 */}
-                            <div
-                                className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200">
-                                <div className="flex-1">
-                                    <h4 className="text-white-900 font-manrope" style={{
-                                        fontWeight: "400",
-                                        fontSize: "18px"
-                                    }}>State Tested Nursing Assistants (STNAs)</h4>
-                                </div>
-                                <div className="flex-1 md:text-center">
-                                    <p className="text-white-500 font-manrope" style={{
-                                        fontWeight: "400",
-                                        fontSize: "16px"
-                                    }}>Contains job description</p>
-                                </div>
-                                <div className="flex-shrink-0 mt-3 md:mt-0">
-                                    <button
-                                        className="border font-manrope border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
-                                        style={{
+                            {jobs.map((job, idx) => (
+                                <div
+                                    key={job.id}
+                                    className={
+                                        "flex flex-col md:flex-row md:items-center justify-between py-4" +
+                                        (idx === jobs.length - 1 ? "" : " border-b border-gray-200")
+                                    }
+                                >
+                                    <div className="flex-1">
+                                        <h4 className="text-white-900 font-manrope" style={{
                                             fontWeight: "400",
-                                            fontSize: "14px",
-                                        }}
-                                    >
-                                        Apply Now
-                                    </button>
+                                            fontSize: "18px"
+                                        }}>{job.title}</h4>
+                                    </div>
+                                    <div className="flex-1 md:text-center">
+                                        <p className="text-white-500 font-manrope" style={{
+                                            fontWeight: "400",
+                                            fontSize: "16px"
+                                        }}>Contains job description</p>
+                                    </div>
+                                    <div className="flex-shrink-0 mt-3 md:mt-0 flex items-center gap-3">
+                                        <button
+                                            type="button"
+                                            onClick={() => openJobDescription(job.id)}
+                                            className="bg-white text-[#1E40AF] px-6 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-manrope"
+                                            style={{
+                                                fontWeight: "500",
+                                                fontSize: "14px",
+                                            }}
+                                        >
+                                            Job Description
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() => openApply(job.id)}
+                                            className="border font-manrope border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                                            style={{
+                                                fontWeight: "500",
+                                                fontSize: "14px",
+                                            }}
+                                        >
+                                            Apply
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            {/* Job 2 */}
-                            <div
-                                className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-[#B1B1B1]">
-                                <div className="flex-1">
-                                    <h4 className="text-white-900 font-manrope" style={{
-                                        fontWeight: "500",
-                                        fontSize: "18px"
-                                    }}>Home Health Aides (HHAs)</h4>
-                                </div>
-                                <div className="flex-1 md:text-center">
-                                    <p className="text-white-500 font-manrope" style={{
-                                        fontWeight: "400",
-                                        fontSize: "16px"
-                                    }}>Contains job description</p>
-                                </div>
-                                <div className="flex-shrink-0 mt-3 md:mt-0">
-                                    <button
-                                        className="border font-manrope border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
-                                        style={{
-                                            fontWeight: "500",
-                                            fontSize: "14px",
-                                        }}
-                                    >
-                                        Apply Now
-                                    </button>
-                                </div>
-
-                            </div>
-                            {/* Job 3 */}
-                            <div className="flex flex-col md:flex-row md:items-center justify-between py-4">
-                                <div className="flex-1">
-                                    <h4 className="text-white-900 font-manrope" style={{
-                                        fontWeight: "500",
-                                        fontSize: "18px"
-                                    }}>Direct Support Professionals (DSPs)</h4>
-                                </div>
-                                <div className="flex-1 md:text-center">
-                                    <p className="text-white-500 font-manrope" style={{
-                                        fontWeight: "400",
-                                        fontSize: "16px"
-                                    }}>Contains job description</p>
-                                </div>
-                                <div className="flex-shrink-0 mt-3 md:mt-0">
-                                    <button
-                                        className="border font-manrope border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
-                                        style={{
-                                            fontWeight: "500",
-                                            fontSize: "14px",
-                                        }}
-                                    >
-                                        Apply Now
-                                    </button>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                     <div className="bg-white/10 backdrop-blur-md rounded-2xl px-8 py-6" style={{marginBottom: "-96px"}}>
