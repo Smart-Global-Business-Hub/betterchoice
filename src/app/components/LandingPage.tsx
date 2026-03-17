@@ -170,9 +170,60 @@ export default function LandingPage() {
         el.scrollIntoView({behavior: "smooth", block: "start"});
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [contactStatus, setContactStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+    const [contactError, setContactError] = useState<string>("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
+        setContactError("");
+        
+        // Validate required fields
+        if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim() || !formData.message.trim()) {
+            setContactError("Please fill in all required fields.");
+            return;
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setContactError("Please enter a valid email address.");
+            return;
+        }
+
+        setContactStatus("submitting");
+
+        try {
+            const response = await fetch("http://localhost:3001/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(errorData || "Failed to submit form");
+            }
+
+            setContactStatus("success");
+            // Reset form after successful submission
+            setFormData({
+                firstName: "",
+                lastName: "",
+                email: "",
+                phone: "",
+                service: "",
+                message: ""
+            });
+            
+            // Reset status after 3 seconds
+            setTimeout(() => {
+                setContactStatus("idle");
+            }, 3000);
+
+        } catch (err: any) {
+            setContactStatus("error");
+            setContactError(err?.message ? String(err.message) : "Failed to submit form. Please try again.");
+        }
     };
 
     const openJobDescription = (jobId: (typeof jobs)[number]["id"]) => {
@@ -261,7 +312,7 @@ export default function LandingPage() {
         setApplyStatus("submitting");
 
         try {
-            const res = await fetch("/api/job-application", {
+            const response = await fetch("http://localhost:3001/api/job-application", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -272,12 +323,40 @@ export default function LandingPage() {
                 }),
             });
 
-            if (!res.ok) {
-                const text = await res.text();
+            if (!response.ok) {
+                const text = await response.text();
                 throw new Error(text || "Failed to submit application");
             }
 
             setApplyStatus("success");
+            
+            // Reset form after successful submission
+            setApplicationData({
+                firstName: "",
+                lastName: "",
+                email: "",
+                phone: "",
+                streetAddress: "",
+                city: "",
+                state: "",
+                zipCode: "",
+                certificationNumber: "",
+                certificationExpiryDate: "",
+                yearsOfExperience: "",
+                availability: "",
+                interestReason: "",
+                professionalReferences: "",
+                consentBackground: false,
+                consentPersonalData: false,
+            });
+            setResumeFile(null);
+            
+            // Reset status after 3 seconds
+            setTimeout(() => {
+                setApplyStatus("idle");
+                setIsApplyOpen(false);
+            }, 3000);
+
         } catch (err: any) {
             setApplyStatus("error");
             setApplyError(err?.message ? String(err.message) : "Failed to submit application");
@@ -326,7 +405,7 @@ export default function LandingPage() {
             </section>
 
             <Dialog open={isJobDescriptionOpen} onOpenChange={setIsJobDescriptionOpen}>
-                <DialogContent className="max-w-5xl max-h-[calc(100vh-3rem)] p-0 overflow-hidden border-0 shadow-2xl rounded-2xl">
+                <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-5xl max-h-[calc(100vh-3rem)] p-0 overflow-hidden border-0 shadow-2xl rounded-2xl">
                     <div className="relative">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/10 via-white to-transparent" />
                         <div className="relative p-8">
@@ -444,7 +523,7 @@ export default function LandingPage() {
             </Dialog>
 
             <Dialog open={isApplyOpen} onOpenChange={setIsApplyOpen}>
-                <DialogContent className="max-w-5xl max-h-[calc(100vh-3rem)] p-0 overflow-hidden border-0 shadow-2xl rounded-2xl">
+                <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-5xl max-h-[calc(100vh-3rem)] p-0 overflow-hidden border-0 shadow-2xl rounded-2xl">
                     <div className="relative">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/10 via-white to-transparent" />
                         <div className="relative p-8">
@@ -1339,12 +1418,28 @@ export default function LandingPage() {
                                         onChange={(e) => setFormData({...formData, message: e.target.value})}
                                     />
                                 </div>
+                                {contactError ? (
+                                    <div className="text-red-600 font-manrope" style={{ fontSize: "14px" }}>
+                                        {contactError}
+                                    </div>
+                                ) : null}
+
+                                {contactStatus === "success" ? (
+                                    <div className="text-green-600 font-manrope" style={{ fontSize: "14px" }}>
+                                        Form submitted successfully! We'll get back to you within 24 hours.
+                                    </div>
+                                ) : null}
+
                                 <button
                                     type="submit"
-                                    className="w-full font-manrope bg-[#2563EB] hover:bg-[#1d4ed8] text-white py-4 rounded-lg transition-colors"
+                                    disabled={contactStatus === "submitting"}
+                                    className={
+                                        "w-full font-manrope bg-[#2563EB] hover:bg-[#1d4ed8] text-white py-4 rounded-lg transition-colors " +
+                                        (contactStatus === "submitting" ? "opacity-70" : "")
+                                    }
                                     style={{fontWeight: "500", fontSize: "14px"}}
                                 >
-                                    Submit Request
+                                    {contactStatus === "submitting" ? "Submitting..." : "Submit Request"}
                                 </button>
                             </form>
                         </div>
