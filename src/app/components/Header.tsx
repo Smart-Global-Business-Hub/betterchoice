@@ -1,4 +1,5 @@
 import { useState } from "react";
+import sitelogo from "../../assets/newsvg.svg";
 import { Phone, Users, ChevronDown, Menu, X } from "lucide-react";
 
 export default function Header() {
@@ -16,7 +17,7 @@ export default function Header() {
     return (
         <>
             {/* Top Bar - Hidden on very small screens to save space, but kept for consistency */}
-            <div className="bg-[#2563EB] text-white text-sm relative z-[60]">
+            <div className="bg-[#1677FF] text-white text-sm relative z-[60]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
                     <div className="flex items-center gap-2">
                         <Phone className="w-4 h-4" />
@@ -37,58 +38,55 @@ export default function Header() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
-                        <div
-                            className="flex items-center cursor-pointer flex-shrink-0"
-                            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                        >
-                            <span className="text-lg sm:text-xl font-bold">
-                                <span className="text-[#1677FF]">A Better </span>
-                                <span className="text-[#1677FF]">Choice Care</span>
-                            </span>
-                        </div>
+                        <img
+                            src={sitelogo}
+                            style={{ width: "158px", height: "90px" }}
+                            alt="Logo"
+                            className="object-contain"
+                        />
 
-                        {/* DESKTOP NAVIGATION: Only shows at 1024px+ */}
-                        <nav className="hidden lg:!flex items-center gap-6 xl:gap-8">
-                            {/* Services Dropdown */}
-                            <div className="relative">
-                                <button
-                                    onMouseEnter={() => setServicesOpen(true)}
-                                    onClick={() => setServicesOpen(!servicesOpen)}
-                                    className="flex items-center gap-1 text-gray-700 hover:text-[#2563EB] font-medium text-sm transition-colors"
-                                >
-                                    Services
-                                    <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-                                </button>
-
-                                {servicesOpen && (
-                                    <div
-                                        className="absolute top-full left-0 mt-2 w-[500px] bg-white rounded-xl shadow-2xl border border-gray-100 p-4 z-50"
-                                        onMouseLeave={() => setServicesOpen(false)}
+                        <div className="max-w-7xl mx-auto px-4 w-full">
+                            <nav className="hidden lg:!flex justify-start items-center gap-6 xl:gap-8 w-full">
+                                <div className="relative">
+                                    <button
+                                        onMouseEnter={() => setServicesOpen(true)}
+                                        onClick={() => setServicesOpen(!servicesOpen)}
+                                        className="flex items-center gap-1 text-black hover:text-[#2563EB] transition-colors nav-link-style"
                                     >
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <ServiceItem
-                                                title="Passport Service"
-                                                desc="Helping seniors 60+ remain safe."
-                                                onClick={() => scrollToSection("passport-services")}
-                                            />
-                                            <ServiceItem
-                                                title="DODD"
-                                                desc="Person-centered specialized care."
-                                                onClick={() => scrollToSection("dodd-services")}
-                                            />
-                                            <ServiceItem
-                                                title="Private Pay"
-                                                desc="Customized care for your needs."
-                                                onClick={() => scrollToSection("contact")}
-                                            />
+                                        Services
+                                        <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                                    </button>
+
+                                    {servicesOpen && (
+                                        <div
+                                            className="absolute top-full left-0 mt-2 w-[500px] bg-white rounded-xl shadow-2xl border border-gray-100 p-4 z-50"
+                                            onMouseLeave={() => setServicesOpen(false)}
+                                        >
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <ServiceItem
+                                                    title="Passport Service"
+                                                    desc="Helping seniors 60+ remain safe."
+                                                    onClick={() => scrollToSection("passport-services")}
+                                                />
+                                                <ServiceItem
+                                                    title="DODD"
+                                                    desc="Person-centered specialized care."
+                                                    onClick={() => scrollToSection("dodd-services")}
+                                                />
+                                                <ServiceItem
+                                                    title="Private Pay"
+                                                    desc="Customized care for your needs."
+                                                    onClick={() => scrollToSection("contact")}
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                )}
-                            </div>
-                            <button onClick={() => scrollToSection("why-choose-us")} className="nav-link-style">For Families</button>
-                            <button onClick={() => scrollToSection("careers")} className="nav-link-style">Careers</button>
-                            <button onClick={() => scrollToSection("contact")} className="nav-link-style">Contact Us</button>
-                        </nav>
+                                    )}
+                                </div>
+                                <button onClick={() => scrollToSection("why-choose-us")} className="nav-link-style">For Families</button>
+                                <button onClick={() => scrollToSection("careers")} className="nav-link-style">Careers</button>
+                                <button onClick={() => scrollToSection("contact")} className="nav-link-style">Contact Us</button>
+                            </nav>
+                        </div>
 
                         {/* RIGHT SECTION: CTA and Mobile Toggle */}
                         <div className="flex items-center gap-2 sm:gap-3">

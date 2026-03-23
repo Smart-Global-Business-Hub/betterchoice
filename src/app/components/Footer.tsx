@@ -1,4 +1,6 @@
 import { Youtube, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import sitelogo from "../../assets/newsvg.svg";
+
 
 export default function Footer() {
     const scrollToSection = (id: string) => {
@@ -8,17 +10,19 @@ export default function Footer() {
     };
 
     return (
-        <footer className="w-full bg-[#1e293b] text-gray-300">
+        <footer className="w-full bg-[#101828] text-gray-300">
             {/* Main Footer Content */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {/* Logo & Description */}
                     <div className="lg:col-span-1">
                         <div className="mb-4">
-                            <span >
-                                <span className="text-white" style={{fontFamily: "Manrope, sans-serif", fontWeight: "700", fontSize: "19px"}}>A Better </span>
-                                <span className="text-[#2563EB]" style={{fontFamily: "Manrope, sans-serif", fontWeight: "700", fontSize: "19px"}}>Choice Care</span>
-                            </span>
+                            <img
+                                src={sitelogo}
+                                style={{ width: "158px", height: "90px" }}
+                                alt="Logo"
+                                className="object-contain"
+                            />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed text-white" style={{fontFamily: "Manrope, sans-serif", fontWeight: "400", fontSize: "14px"}}>
                             Providing compassionate, certified home care services across Ohio for seniors and individuals with developmental disabilities.

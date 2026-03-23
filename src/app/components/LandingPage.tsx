@@ -16,6 +16,7 @@ import {
 import heroImage from "../../assets/heromain.png";
 import seniorCareImage from "../../assets/picture.png";
 import doddImage from "../../assets/picture2.png";
+import background from "../../assets/Bg.png";
 
 export default function LandingPage() {
     const [formData, setFormData] = useState({
@@ -176,7 +177,7 @@ export default function LandingPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setContactError("");
-        
+
         // Validate required fields
         if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim() || !formData.message.trim()) {
             setContactError("Please fill in all required fields.");
@@ -214,7 +215,7 @@ export default function LandingPage() {
                 service: "",
                 message: ""
             });
-            
+
             // Reset status after 3 seconds
             setTimeout(() => {
                 setContactStatus("idle");
@@ -329,7 +330,7 @@ export default function LandingPage() {
             }
 
             setApplyStatus("success");
-            
+
             // Reset form after successful submission
             setApplicationData({
                 firstName: "",
@@ -350,7 +351,7 @@ export default function LandingPage() {
                 consentPersonalData: false,
             });
             setResumeFile(null);
-            
+
             // Reset status after 3 seconds
             setTimeout(() => {
                 setApplyStatus("idle");
@@ -820,7 +821,7 @@ export default function LandingPage() {
 
             <div className="relative z-10 -mt-16 mb-8">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-white rounded-xl shadow-lg py-6 px-8">
+                    <div className="bg-white py-6 px-8">
                         <div className="flex flex-wrap justify-center gap-12 lg:gap-24">
                             <div className="flex items-center gap-4">
                                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
@@ -889,21 +890,21 @@ export default function LandingPage() {
                             </p>
                             <div className="grid grid-cols-2 gap-4 mb-8">
                                 <div className="flex items-center gap-3">
-                                    <Home className="w-5 h-5 text-[#2563EB]"/>
+                                    <Home className="w-5 h-5 text-[#00A63E]"/>
                                     <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Homemaking Services</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <Home className="w-5 h-5 text-[#2563EB]"/>
+                                    <Home className="w-5 h-5 text-[#00A63E]"/>
                                     <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Personal Care Assistance</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <Heart className="w-5 h-5 text-[#2563EB]"/>
+                                    <Heart className="w-5 h-5 text-[#00A63E]"/>
                                     <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
@@ -954,35 +955,35 @@ export default function LandingPage() {
                             </p>
                             <div className="grid grid-cols-2 gap-4 mb-8">
                                 <div className="flex items-center gap-3">
-                                    <Home className="w-5 h-5 text-[#2563EB]"/>
+                                    <Home className="w-5 h-5 text-[#00A63E]"/>
                                     <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Homemaker / Personal Care</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <Building2 className="w-5 h-5 text-green-600"/>
+                                    <Building2 className="w-5 h-5 text-[#00A63E]"/>
                                     <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Vocational Habilitation</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <Users className="w-5 h-5 text-[#2563EB]"/>
+                                    <Users className="w-5 h-5 text-[#00A63E]"/>
                                     <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Supported Living</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <Car className="w-5 h-5 text-green-600"/>
+                                    <Car className="w-5 h-5 text-[#00A63E]"/>
                                     <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
                                     }}>Transportation</span>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <Heart className="w-5 h-5 text-[#2563EB]"/>
+                                    <Heart className="w-5 h-5 text-[#00A63E]"/>
                                     <span className="text-gray-700 font-manrope" style={{
                                         fontWeight: "500px",
                                         fontSize: "16px"
@@ -1009,8 +1010,9 @@ export default function LandingPage() {
             </section>
             <div
                 style={{
-                    backgroundImage: "url('/src/assets/Bg.png')",
-                    backgroundSize: "contain",
+                    backgroundImage: `url(${background})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
                 }}
             >
@@ -1154,7 +1156,8 @@ export default function LandingPage() {
                                 <div>
                                     <h3 className="text-gray-900 mb-2 font-manrope font-light"
                                         style={{
-                                            fontSize: "24px"
+                                            fontSize: "24px",
+                                            fontWeight: "400"
                                         }}>Initial Contact</h3>
                                     <p className="text-gray-600 font-manrope"
                                        style={{fontWeight: "500", fontSize: "16px"}}>
@@ -1174,7 +1177,8 @@ export default function LandingPage() {
                                 <div>
                                     <h3 className="text-gray-900 mb-2 font-manrope font-light"
                                         style={{
-                                            fontSize: "24px"
+                                            fontSize: "24px",
+                                            fontWeight: "400"
                                         }}>Care Coordination</h3>
                                     <p className="text-gray-600 font-manrope"
                                        style={{fontWeight: "500", fontSize: "16px"}}>
@@ -1183,18 +1187,19 @@ export default function LandingPage() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="hidden md:block"></div>
+                            <div className="relative flex items-start gap-4"></div>
                             <div className="relative flex items-start gap-4">
                                 <div
-                                    className="hidden md:block absolute -top-14 left-6 h-8 border-l-2 border-dashed border-gray-300"/>
+                                    className="hidden md:block absolute -top-14 left-6 h-20 border-l-2 border-dashed border-gray-300"/>
                                 <div
-                                    className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 bg-[#2563EB] text-white rounded-full text-xl font-bold z-10">
+                                    className="flex-shrink-0 inline-flex items-center justify-center mt-10  w-12 h-12 bg-[#2563EB] text-white rounded-full text-xl font-bold z-10">
                                     3
                                 </div>
                                 <div>
-                                    <h3 className="text-gray-900 mb-2 font-manrope font-light"
+                                    <h3 className="text-gray-900 mb-2 mt-10 font-manrope font-light"
                                         style={{
-                                            fontSize: "24px"
+                                            fontSize: "24px",
+                                            fontWeight: "400"
                                         }}>Matched Care</h3>
                                     <p className="text-gray-600 font-manrope"
                                        style={{fontWeight: "500", fontSize: "16px"}}>
@@ -1209,7 +1214,8 @@ export default function LandingPage() {
             </section>
 </div>
             <section id="careers" className="py-16 lg:py-24 scroll-mt-20"
-                     style={{background: 'linear-gradient(180deg, #2563EB 0%, #1E40AF 100%)'}}>
+
+            style={{background: 'linear-gradient(90deg, #0D3796 40%, #155DFC 100%)'}}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10">
                         <h2 className="text-white mb-4 font-manrope font-light"
