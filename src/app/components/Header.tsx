@@ -21,14 +21,14 @@ export default function Header() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
                     <div className="flex items-center gap-2">
                         <Phone className="w-4 h-4" />
-                        <span>(123) 456-7890</span>
+                        <span className="font-manrope">380-235-7179</span>
                     </div>
                     <button
                         onClick={() => scrollToSection("careers")}
-                        className="flex items-center gap-2 hover:underline"
+                        className="flex items-center gap-2 hover:underline cursor-pointer"
                     >
                         <Users className="w-4 h-4" />
-                        <span className="hidden xs:inline">Join Our Team</span>
+                        <span className="hidden xs:inline font-manrope">Join Our Team</span>
                     </button>
                 </div>
             </div>
@@ -38,12 +38,17 @@ export default function Header() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
-                        <img
-                            src={sitelogo}
-                            style={{ width: "158px", height: "90px" }}
-                            alt="Logo"
-                            className="object-contain"
-                        />
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="cursor-pointer"
+                        >
+                            <img
+                                src={sitelogo}
+                                style={{ width: "158px", height: "90px" }}
+                                alt="Logo"
+                                className="object-contain"
+                            />
+                        </button>
 
                         <div className="max-w-7xl mx-auto px-4 w-full">
                             <nav className="hidden lg:!flex justify-start items-center gap-6 xl:gap-8 w-full">
@@ -51,7 +56,7 @@ export default function Header() {
                                     <button
                                         onMouseEnter={() => setServicesOpen(true)}
                                         onClick={() => setServicesOpen(!servicesOpen)}
-                                        className="flex items-center gap-1 text-black hover:text-[#2563EB] transition-colors nav-link-style"
+                                        className="flex items-center gap-1 text-black hover:text-[#2563EB] transition-colors nav-link-style cursor-pointer font-manrope"
                                     >
                                         Services
                                         <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
@@ -82,9 +87,9 @@ export default function Header() {
                                         </div>
                                     )}
                                 </div>
-                                <button onClick={() => scrollToSection("why-choose-us")} className="nav-link-style">For Families</button>
-                                <button onClick={() => scrollToSection("careers")} className="nav-link-style">Careers</button>
-                                <button onClick={() => scrollToSection("contact")} className="nav-link-style">Contact Us</button>
+                                <button onClick={() => scrollToSection("why-choose-us")} className="nav-link-style cursor-pointer font-manrope">For Families</button>
+                                <button onClick={() => scrollToSection("careers")} className="nav-link-style cursor-pointer font-manrope">Careers</button>
+                                <button onClick={() => scrollToSection("contact")} className="nav-link-style cursor-pointer font-manrope">Contact Us</button>
                             </nav>
                         </div>
 
@@ -94,7 +99,7 @@ export default function Header() {
                             <button
                                 type="button"
                                 onClick={() => scrollToSection("contact")}
-                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2 rounded-lg transition-all active:scale-95 whitespace-nowrap"
+                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2 rounded-lg transition-all active:scale-95 whitespace-nowrap cursor-pointer font-manrope"
                             >
                                 Start Care Today
                             </button>
@@ -133,9 +138,9 @@ export default function Header() {
 // Sub-components to keep code clean
 function ServiceItem({ title, desc, onClick }: { title: string; desc: string; onClick: () => void }) {
     return (
-        <button onClick={onClick} className="text-left hover:bg-blue-50 rounded-lg p-3 transition-colors group">
-            <h4 className="text-gray-900 text-sm font-semibold group-hover:text-[#2563EB]">{title}</h4>
-            <p className="text-gray-500 text-xs mt-1 leading-snug">{desc}</p>
+        <button onClick={onClick} className="text-left hover:bg-blue-50 rounded-lg p-3 transition-colors group cursor-pointer">
+            <h4 className="text-gray-900 text-sm font-semibold group-hover:text-[#2563EB] font-manrope">{title}</h4>
+            <p className="text-gray-500 text-xs mt-1 leading-snug font-manrope">{desc}</p>
         </button>
     );
 }
@@ -144,7 +149,7 @@ function MobileNavLink({ text, onClick }: { text: string; onClick: () => void })
     return (
         <button
             onClick={onClick}
-            className="w-full text-left py-3.5 px-4 text-base text-gray-700 font-semibold rounded-xl active:bg-blue-50 transition-colors"
+            className="w-full text-left py-3.5 px-4 text-base text-gray-700 font-semibold rounded-xl active:bg-blue-50 transition-colors cursor-pointer font-manrope"
         >
             {text}
         </button>

@@ -2,7 +2,7 @@ import {useState} from "react";
 import {
     Home, Heart, Users, Car, Headphones, Building2,
     CheckCircle, MapPin, Clock, TrendingUp, Briefcase,
-    DollarSign, Phone, Mail, MapPinned
+    DollarSign, Phone, Mail, MapPinned, X
 } from "lucide-react";
 
 import {
@@ -13,10 +13,11 @@ import {
     DialogTitle,
 } from "./ui/dialog";
 
-import heroImage from "../../assets/heromain.png";
+import heroImage from "../../assets/heros.png";
 import seniorCareImage from "../../assets/picture.png";
 import doddImage from "../../assets/picture2.png";
 import background from "../../assets/Bg.png";
+import backgroundwcu from "../../assets/wcu.png";
 
 export default function LandingPage() {
     const [formData, setFormData] = useState({
@@ -366,17 +367,16 @@ export default function LandingPage() {
 
     return (
         <div className="bg-white w-full overflow-x-hidden">
-            <section className="relative min-h-[600px] lg:min-h-[700px]">
-                <div className="absolute inset-0">
-                    <img
-                        src={heroImage}
-                        alt="Compassionate home care"
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"/>
-                </div>
+            <section className="relative min-h-[600px] lg:min-h-[700px]"
+                     style={{
+                         backgroundImage: `url(${heroImage})`,
+                         backgroundPosition: "center",
+                         backgroundRepeat: "no-repeat",
+                         backgroundSize: "113% 113%"
+                     }}>
+
                 <div
-                    className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-[600px] lg:min-h-[700px]">
+                    className="relative h-full max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 flex items-center min-h-[600px] lg:min-h-[700px]">
                     <div className="max-w-xl text-white py-20">
                         <h1 className="leading-tight mb-6 font-manrope text-6xl font-light"
                             style={{ fontSize: "48px"}}>
@@ -390,13 +390,13 @@ export default function LandingPage() {
                         <div className="flex flex-wrap gap-4">
                             <button
                                 onClick={() => scrollToSection("contact")}
-                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-medium px-8 py-4 rounded-lg transition-colors"
+                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-medium px-8 py-4 rounded-lg transition-colors font-manrope"
                             >
                                 Request a Free Assessment
                             </button>
                             <button
                                 onClick={() => scrollToSection("passport-services")}
-                                className="bg-white text-gray-900 hover:bg-gray-100 font-medium px-8 py-4 rounded-lg transition-colors"
+                                className="bg-white text-gray-900 hover:bg-gray-100 font-medium px-8 py-4 rounded-lg transition-colors font-manrope"
                             >
                                 View Our Services
                             </button>
@@ -411,11 +411,8 @@ export default function LandingPage() {
                         <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/10 via-white to-transparent" />
                         <div className="relative p-8">
                             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shadow-lg shadow-blue-500/20">
-                                        <Briefcase className="w-6 h-6" />
-                                    </div>
-                                    <div>
+                                <div className="flex items-start gap-6">
+                                    <div className="font-manrope">
                                         <DialogHeader className="gap-2">
                                             <DialogTitle className="font-manrope tracking-tight" style={{ fontWeight: "600", fontSize: "30px" }}>
                                                 {activeJob?.title || "Job Description"}
@@ -426,32 +423,23 @@ export default function LandingPage() {
                                         </DialogHeader>
                                     </div>
                                 </div>
-
-                                <button
-                                    type="button"
-                                    onClick={() => (activeJob ? (setIsJobDescriptionOpen(false), openApply(activeJob.id)) : null)}
-                                    className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded-xl transition-colors font-manrope shadow-lg shadow-blue-500/20"
-                                    style={{ fontWeight: "500", fontSize: "14px" }}
-                                >
-                                    Apply Now
-                                </button>
                             </div>
 
                             {activeJob ? (
-                                <div className="mt-6 flex flex-wrap gap-2">
-                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700">
+                                <div className="mt-8 flex flex-wrap gap-3">
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 text-gray-700">
                                         <MapPin className="w-4 h-4" />
                                         <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.meta.locations}</span>
                                     </span>
-                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700">
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 text-gray-700">
                                         <Briefcase className="w-4 h-4" />
                                         <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.meta.schedule}</span>
                                     </span>
-                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700">
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 text-gray-700">
                                         <Clock className="w-4 h-4" />
                                         <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.meta.posted}</span>
                                     </span>
-                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700">
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 text-gray-700">
                                         <DollarSign className="w-4 h-4" />
                                         <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.meta.pay}</span>
                                     </span>
@@ -462,7 +450,7 @@ export default function LandingPage() {
 
                     {activeJob ? (
                         <div className="px-8 pb-8">
-                            <div className="rounded-2xl border border-gray-200 bg-white shadow-sm">
+                            <div className="rounded-2xl bg-white">
                                 <div className="max-h-[65vh] overflow-y-auto p-6 sm:p-8 space-y-8">
                                     <div>
                                         <h4 className="text-gray-900 font-manrope" style={{ fontWeight: "600", fontSize: "18px" }}>
@@ -480,9 +468,13 @@ export default function LandingPage() {
                                             </h4>
                                             <ul className="mt-3 space-y-2">
                                                 {activeJob.responsibilities.map((item) => (
-                                                    <li key={item} className="flex items-start gap-3 text-gray-600">
-                                                        <span className="mt-1.5 inline-flex w-2 h-2 rounded-full bg-[#2563EB]" />
-                                                        <span className="font-manrope" style={{ fontWeight: "400", fontSize: "15px" }}>{item}</span>
+                                                    <li className="flex items-start gap-3 text-gray-600">
+  <span className="mt-2 w-3 flex justify-center flex-shrink-0">
+    <span className="w-2.5 h-2.5 rounded-full bg-green-600"></span>
+  </span>
+                                                        <span className="font-manrope text-[15px] leading-6">
+    {item}
+  </span>
                                                     </li>
                                                 ))}
                                             </ul>
@@ -495,8 +487,12 @@ export default function LandingPage() {
                                             <ul className="mt-3 space-y-2">
                                                 {activeJob.requirements.map((item) => (
                                                     <li key={item} className="flex items-start gap-3 text-gray-600">
-                                                        <span className="mt-1.5 inline-flex w-2 h-2 rounded-full bg-green-600" />
-                                                        <span className="font-manrope" style={{ fontWeight: "400", fontSize: "15px" }}>{item}</span>
+  <span className="mt-2 w-3 flex justify-center flex-shrink-0">
+    <span className="w-2.5 h-2.5 rounded-full bg-green-600"></span>
+  </span>
+                                                        <span className="font-manrope text-[15px] leading-6 font-normal">
+    {item}
+  </span>
                                                     </li>
                                                 ))}
                                             </ul>
@@ -515,6 +511,27 @@ export default function LandingPage() {
                                                 </div>
                                             ))}
                                         </div>
+                                    </div>
+
+                                    {/* Apply Button - Bottom Left */}
+                                    <div className="mt-6 flex justify-start gap-4"> {/* Added gap-4 here */}
+                                        <button
+                                            type="button"
+                                            onClick={() => (activeJob ? (setIsJobDescriptionOpen(false), openApply(activeJob.id)) : null)}
+                                            className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded-xl transition-colors font-manrope shadow-lg shadow-blue-500/20"
+                                            style={{ fontWeight: "500", fontSize: "14px" }}
+                                        >
+                                            Apply Now
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => setIsJobDescriptionOpen(false)}
+                                            className="bg-[#FFFFFF] border border-gray-200 hover:bg-gray-100 text-black px-5 py-2.5 rounded-xl transition-colors font-manrope shadow-lg shadow-gray-200/20"
+                                            style={{ fontWeight: "500", fontSize: "14px" }}
+                                        >
+                                            Close
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -537,29 +554,16 @@ export default function LandingPage() {
                                         <DialogDescription className="font-manrope text-gray-600" style={{ fontWeight: "400", fontSize: "15px" }}>
                                             Fill out the form below to apply for this position. All fields marked with * are required.
                                         </DialogDescription>
-                                        {activeJob?.title ? (
-                                            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-gray-200 text-gray-700 w-fit">
-                                                <Briefcase className="w-4 h-4" />
-                                                <span className="font-manrope" style={{ fontSize: "13px" }}>{activeJob.title}</span>
-                                            </div>
-                                        ) : null}
+
                                     </DialogHeader>
                                 </div>
 
-                                <div className="flex items-center gap-3">
-                                    <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-white/70 border border-gray-200">
-                                        <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
-                                        <span className="text-gray-700 font-manrope" style={{ fontSize: "13px" }}>
-                                            Secure submission
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="px-8 pb-8">
-                        <div className="rounded-2xl border border-gray-200 bg-white shadow-sm">
+                        <div className="rounded-2xl bg-white ">
                             <div className="max-h-[70vh] overflow-y-auto p-6 sm:p-8">
                                 <form onSubmit={submitApplication} className="space-y-10">
                                 <div>
@@ -820,7 +824,7 @@ export default function LandingPage() {
             </Dialog>
 
             <div className="relative z-10 -mt-16 mb-8">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
                     <div className="bg-white py-6 px-8">
                         <div className="flex flex-wrap justify-center gap-12 lg:gap-24">
                             <div className="flex items-center gap-4">
@@ -871,7 +875,7 @@ export default function LandingPage() {
             </div>
 
             <section id="passport-services" className="py-20 lg:py-32 scroll-mt-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
                             <span className="text-[#69B1FF] uppercase tracking-wide font-manrope font-light"
@@ -930,7 +934,7 @@ export default function LandingPage() {
             </section>
 
             <section id="dodd-services" className="py-20 lg:py-32 scroll-mt-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="order-2 lg:order-1">
                             <img
@@ -1008,19 +1012,18 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
-            <div
+            <section
+                className={"w-full"}
                 style={{
-                    backgroundImage: `url(${background})`,
-                    backgroundSize: "cover",
+                    backgroundImage: `url(${backgroundwcu})`,
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
+                    backgroundSize: "100% 100%"
                 }}
             >
-            <section
-                id="why-choose-us"
-                className="py-20 lg:py-32 scroll-mt-20"
+            <section id="why-choose-us" className="py-20 lg:py-32 scroll-mt-20"
             >
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
                     <div className="mb-16">
                         <h2 className=" text-gray-900 mb-4 font-manrope text-6xl font-light"
                             style={{ fontSize: "60px"}}>
@@ -1134,7 +1137,7 @@ export default function LandingPage() {
             </section>
 
             <section className="py-20 lg:py-32 ">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
                     <div className="mb-16">
                         <h2 className=" text-gray-900 mb-4 font-manrope font-light"
                             style={{ fontSize: "60px"}}>
@@ -1212,11 +1215,11 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
-</div>
+</section>
             <section id="careers" className="py-16 lg:py-24 scroll-mt-20"
 
             style={{background: 'linear-gradient(90deg, #0D3796 40%, #155DFC 100%)'}}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
                     <div className="text-center mb-10">
                         <h2 className="text-white mb-4 font-manrope font-light"
                             style={{fontSize: "60px"}}>
@@ -1333,7 +1336,7 @@ export default function LandingPage() {
             </section>
 
             <section id="contact" className="py-20 lg:py-32 scroll-mt-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
                     <div className="text-center mb-12">
                         <h2 className="text-gray-900 mb-4 text-6xl font-light text-[60px] font-manrope">
                             Get in Touch
@@ -1365,14 +1368,14 @@ export default function LandingPage() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Full
-                                            Name</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Phone
+                                            Number</label>
                                         <input
-                                            type="text"
-                                            placeholder="John Doe"
+                                            type="tel"
+                                            placeholder="+97112345678"
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
-                                            value={formData.lastName}
-                                            onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                                            value={formData.phone}
+                                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
                                         />
                                     </div>
                                 </div>
@@ -1389,30 +1392,19 @@ export default function LandingPage() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Phone
-                                            Number</label>
-                                        <input
-                                            type="tel"
-                                            placeholder="John Doe"
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Service
+                                            Interest</label>
+                                        <select
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                                        />
+                                            value={formData.service}
+                                            onChange={(e) => setFormData({...formData, service: e.target.value})}
+                                        >
+                                            <option value="">Select a Service</option>
+                                            <option value="passport">PASSPORT Services</option>
+                                            <option value="dodd">DODD Services</option>
+                                            <option value="other">Other</option>
+                                        </select>
                                     </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Service
-                                        Interest</label>
-                                    <select
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
-                                        value={formData.service}
-                                        onChange={(e) => setFormData({...formData, service: e.target.value})}
-                                    >
-                                        <option value="">Select a Service</option>
-                                        <option value="passport">PASSPORT Services</option>
-                                        <option value="dodd">DODD Services</option>
-                                        <option value="other">Other</option>
-                                    </select>
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
@@ -1483,7 +1475,30 @@ export default function LandingPage() {
                                         >
                                             380-235-7179
                                         </p>
-                                        <p className="text-sm text-gray-500">Available 24/7</p>
+                                        <p className="text-sm text-gray-500 font-manrope">Available 24/7</p>
+                                    </div>
+                                </div>
+
+                                {/* Fax */}
+                                <div className="grid grid-cols-[180px_1fr] gap-6 items-start">
+                                    <div className="flex items-center gap-3">
+                                        <Phone className="w-5 h-5 text-gray-500" />
+                                        <span
+                                            className="text-gray-900 font-manrope"
+                                            style={{fontSize: "14px" }}
+                                        >
+        Fax
+      </span>
+                                    </div>
+
+                                    <div>
+                                        <p
+                                            className="text-gray-700 font-manrope"
+                                            style={{fontSize: "14px" }}
+                                        >
+                                            380-234-6670
+                                        </p>
+                                        <p className="text-sm text-gray-500 font-manrope">Available 24/7</p>
                                     </div>
                                 </div>
 
@@ -1506,7 +1521,7 @@ export default function LandingPage() {
                                         >
                                             info@abetterchoicecare.com
                                         </p>
-                                        <p className="text-sm text-gray-500">
+                                        <p className="text-sm text-gray-500 font-manrope">
                                             We'll respond within 24 hours
                                         </p>
                                     </div>
