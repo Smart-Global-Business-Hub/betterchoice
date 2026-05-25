@@ -367,36 +367,36 @@ export default function LandingPage() {
 
     return (
         <div className="bg-white w-full overflow-x-hidden">
-            <section className="relative min-h-[600px] lg:min-h-[700px]"
+            <section className="relative min-h-[500px] sm:min-h-[600px] lg:min-h-[700px]"
                      style={{
                          backgroundImage: `url(${heroImage})`,
                          backgroundPosition: "center",
                          backgroundRepeat: "no-repeat",
-                         backgroundSize: "113% 113%"
+                         backgroundSize: "cover"
                      }}>
 
                 <div
-                    className="relative h-full max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 flex items-center min-h-[600px] lg:min-h-[700px]">
-                    <div className="max-w-xl text-white py-20">
-                        <h1 className="leading-tight mb-6 font-manrope text-6xl font-light"
-                            style={{ fontSize: "48px"}}>
+                    className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-[500px] sm:min-h-[600px] lg:min-h-[700px]">
+                    <div className="max-w-xl text-white py-12 sm:py-16 lg:py-20">
+                        <h1 className="leading-tight mb-4 sm:mb-6 font-manrope font-light text-3xl sm:text-4xl lg:text-5xl xl:text-6xl"
+                            style={{ fontSize: "clamp(28px, 5vw, 48px)"}}>
                             Compassionate Home Care for Ohio Families
                         </h1>
-                        <p className="opacity-90 mb-8 font-manrope text-xl font-light"
-                           style={{ fontSize: "20px"}}>
+                        <p className="opacity-90 mb-6 sm:mb-8 font-manrope font-light text-base sm:text-lg lg:text-xl"
+                           style={{ fontSize: "clamp(16px, 2vw, 20px)"}}>
                             Certified PASSPORT and DODD providers dedicated to independence, dignity, and specialized
                             support across Ohio.
                         </p>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                             <button
                                 onClick={() => scrollToSection("contact")}
-                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-medium px-8 py-4 rounded-lg transition-colors font-manrope"
+                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-medium px-6 py-3 sm:px-8 sm:py-4 rounded-lg transition-colors font-manrope text-sm sm:text-base"
                             >
                                 Request a Free Assessment
                             </button>
                             <button
                                 onClick={() => scrollToSection("passport-services")}
-                                className="bg-white text-gray-900 hover:bg-gray-100 font-medium px-8 py-4 rounded-lg transition-colors font-manrope"
+                                className="bg-white text-gray-900 hover:bg-gray-100 font-medium px-6 py-3 sm:px-8 sm:py-4 rounded-lg transition-colors font-manrope text-sm sm:text-base"
                             >
                                 View Our Services
                             </button>
@@ -823,14 +823,14 @@ export default function LandingPage() {
                 </DialogContent>
             </Dialog>
 
-            <div className="relative z-10 -mt-16 mb-8">
-                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-                    <div className="bg-white py-6 px-8">
-                        <div className="flex flex-wrap justify-center gap-12 lg:gap-24">
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
+            <div className="relative z-10 -mt-12 sm:-mt-16 mb-6 sm:mb-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="bg-white py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12 xl:gap-24">
+                            <div className="flex items-center gap-3 sm:gap-4">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg width="40" height="40" viewBox="0 0 48 48" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-10 sm:h-10">
                                         <path
                                             d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z"
                                             fill="#DBEAFE"/>
@@ -842,14 +842,14 @@ export default function LandingPage() {
 
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-gray-900 font-manrope" style={{fontWeight: "600px", fontSize: "16px"}}>Certified Ohio PASSPORT Provider</p>
-                                    <p className="text-sm text-gray-500 font-manrope" style={{fontWeight: "400px", fontSize: "14px"}}>Trusted Senior Care Services</p>
+                                    <p className="font-semibold text-gray-900 font-manrope text-sm sm:text-base" style={{fontWeight: "600px", fontSize: "clamp(14px, 1.5vw, 16px)"}}>Certified Ohio PASSPORT Provider</p>
+                                    <p className="text-xs sm:text-sm text-gray-500 font-manrope" style={{fontWeight: "400px", fontSize: "clamp(12px, 1.2vw, 14px)"}}>Trusted Senior Care Services</p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
+                            <div className="flex items-center gap-3 sm:gap-4">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg width="40" height="40" viewBox="0 0 48 48" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-10 sm:h-10">
                                         <path
                                             d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z"
                                             fill="#DCFCE7"/>
@@ -865,8 +865,8 @@ export default function LandingPage() {
 
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-gray-900 font-manrope" style={{fontWeight: "600px", fontSize: "16px"}}>DODD Certified Agency</p>
-                                    <p className="text-sm text-gray-500 font-manrope" style={{fontWeight: "400px", fontSize: "14px"}}>Developmental Disabilities Specialists</p>
+                                    <p className="font-semibold text-gray-900 font-manrope text-sm sm:text-base" style={{fontWeight: "600px", fontSize: "clamp(14px, 1.5vw, 16px)"}}>DODD Certified Agency</p>
+                                    <p className="text-xs sm:text-sm text-gray-500 font-manrope" style={{fontWeight: "400px", fontSize: "clamp(12px, 1.2vw, 14px)"}}>Developmental Disabilities Specialists</p>
                                 </div>
                             </div>
                         </div>
@@ -874,137 +874,137 @@ export default function LandingPage() {
                 </div>
             </div>
 
-            <section id="passport-services" className="py-20 lg:py-32 scroll-mt-20">
-                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <section id="passport-services" className="py-12 sm:py-16 lg:py-32 scroll-mt-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
                         <div>
-                            <span className="text-[#69B1FF] uppercase tracking-wide font-manrope font-light"
-                                  style={{ fontSize: "20px"}}>
+                            <span className="text-[#69B1FF] uppercase tracking-wide font-manrope font-light text-sm sm:text-base lg:text-lg"
+                                  style={{ fontSize: "clamp(14px, 1.5vw, 20px)"}}>
                                 PASSPORT / SENIOR CARE
                             </span>
-                            <h2 className=" text-gray-900 mt-4 mb-6 font-manrope font-light"
-                                style={{ fontSize: "48px"}}>
+                            <h2 className=" text-gray-900 mt-3 sm:mt-4 mb-4 sm:mb-6 font-manrope font-light text-2xl sm:text-3xl lg:text-4xl xl:text-5xl"
+                                style={{ fontSize: "clamp(24px, 4vw, 48px)"}}>
                                 Senior Home Care - PASSPORT Waiver
                             </h2>
-                            <p className="text-gray-600 mb-8 font-manrope"
-                               style={{fontWeight: "400px", fontSize: "16px"}}>
+                            <p className="text-gray-600 mb-6 sm:mb-8 font-manrope text-sm sm:text-base lg:text-base"
+                               style={{fontWeight: "400px", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                 Helping seniors aged 60 and above remain safely in their homes. Our PASSPORT services
                                 support independence and peace of mind for families through compassionate, reliable
                                 care.
                             </p>
-                            <div className="grid grid-cols-2 gap-4 mb-8">
-                                <div className="flex items-center gap-3">
-                                    <Home className="w-5 h-5 text-[#00A63E]"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Home className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A63E]"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Homemaking Services</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Home className="w-5 h-5 text-[#00A63E]"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Home className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A63E]"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Personal Care Assistance</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Heart className="w-5 h-5 text-[#00A63E]"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A63E]"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Respite Care</span>
                                 </div>
                             </div>
                             <button
                                 onClick={() => scrollToSection("contact")}
-                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg transition-colors font-manrope"
-                                style={{fontWeight: "500px", fontSize: "14px"}}>
+                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg transition-colors font-manrope text-sm sm:text-base w-full sm:w-auto"
+                                style={{fontWeight: "500px", fontSize: "clamp(13px, 1.3vw, 14px)"}}>
                                 Learn About Passport Services
                             </button>
                         </div>
-                        <div className="relative">
+                        <div className="relative order-1 lg:order-2">
                             <img
                                 src={seniorCareImage}
                                 alt="Senior care services"
-                                className="w-full h-auto "
+                                className="w-full h-auto rounded-lg"
                             />
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="dodd-services" className="py-20 lg:py-32 scroll-mt-20">
-                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <section id="dodd-services" className="py-12 sm:py-16 lg:py-32 scroll-mt-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
                         <div className="order-2 lg:order-1">
                             <img
                                 src={doddImage}
                                 alt="Developmental disabilities support"
-                                className="w-full h-auto"
+                                className="w-full h-auto rounded-lg"
                             />
                         </div>
                         <div className="order-1 lg:order-2">
-                            <span className="text-[#69B1FF] uppercase tracking-wide font-manrope"
-                                  style={{fontWeight: "400px", fontSize: "20px"}}>
+                            <span className="text-[#69B1FF] uppercase tracking-wide font-manrope text-sm sm:text-base lg:text-lg"
+                                  style={{fontWeight: "400px", fontSize: "clamp(14px, 1.5vw, 20px)"}}>
                                 DODD & WAIVER SERVICES
                             </span>
-                            <h2 className=" text-gray-900 mt-4 mb-6 font-manrope font-light"
-                                style={{ fontSize: "48px"}}>
+                            <h2 className=" text-gray-900 mt-3 sm:mt-4 mb-4 sm:mb-6 font-manrope font-light text-2xl sm:text-3xl lg:text-4xl xl:text-5xl"
+                                style={{ fontSize: "clamp(24px, 4vw, 48px)"}}>
                                 Developmental Disabilities Support
                             </h2>
-                            <p className="text-gray-600 mb-8 font-manrope"
-                               style={{fontWeight: "400px", fontSize: "16px"}}>
+                            <p className="text-gray-600 mb-6 sm:mb-8 font-manrope text-sm sm:text-base lg:text-base"
+                               style={{fontWeight: "400px", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                 We provide specialized, person-centered services for individuals with developmental
                                 disabilities, empowering them to live, work, and thrive in their communities.
                             </p>
-                            <div className="grid grid-cols-2 gap-4 mb-8">
-                                <div className="flex items-center gap-3">
-                                    <Home className="w-5 h-5 text-[#00A63E]"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Home className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A63E]"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Homemaker / Personal Care</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Building2 className="w-5 h-5 text-[#00A63E]"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A63E]"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Vocational Habilitation</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Users className="w-5 h-5 text-[#00A63E]"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A63E]"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Supported Living</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Car className="w-5 h-5 text-[#00A63E]"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Car className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A63E]"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Transportation</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Heart className="w-5 h-5 text-[#00A63E]"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A63E]"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Respite Care</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Headphones className="w-5 h-5 text-green-600"/>
-                                    <span className="text-gray-700 font-manrope" style={{
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <Headphones className="w-4 h-4 sm:w-5 sm:h-5 text-green-600"/>
+                                    <span className="text-gray-700 font-manrope text-sm sm:text-base" style={{
                                         fontWeight: "500px",
-                                        fontSize: "16px"
+                                        fontSize: "clamp(14px, 1.5vw, 16px)"
                                     }}>Remote Support Services</span>
                                 </div>
                             </div>
                             <button
                                 onClick={() => scrollToSection("contact")}
-                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg transition-colors font-manrope"
-                                style={{fontWeight: "500px", fontSize: "14px"}}
+                                className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg transition-colors font-manrope text-sm sm:text-base w-full sm:w-auto"
+                                style={{fontWeight: "500px", fontSize: "clamp(13px, 1.3vw, 14px)"}}
                             >
                                 Learn About DODD Services
                             </button>
@@ -1018,27 +1018,27 @@ export default function LandingPage() {
                     backgroundImage: `url(${backgroundwcu})`,
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
-                    backgroundSize: "100% 100%"
+                    backgroundSize: "cover"
                 }}
             >
-            <section id="why-choose-us" className="py-20 lg:py-32 scroll-mt-20"
+            <section id="why-choose-us" className="py-12 sm:py-16 lg:py-32 scroll-mt-20"
             >
-                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-                    <div className="mb-16">
-                        <h2 className=" text-gray-900 mb-4 font-manrope text-6xl font-light"
-                            style={{ fontSize: "60px"}}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="mb-8 sm:mb-12 lg:mb-16">
+                        <h2 className=" text-gray-900 mb-3 sm:mb-4 font-manrope font-light text-3xl sm:text-4xl lg:text-5xl xl:text-6xl"
+                            style={{ fontSize: "clamp(28px, 5vw, 60px)"}}>
                             Why Choose Us
                         </h2>
-                        <p className="text-black font-manrope font-light"
-                           style={{fontWeight: "400px", fontSize: "24px"}}>
+                        <p className="text-black font-manrope font-light text-lg sm:text-xl lg:text-2xl"
+                           style={{fontWeight: "400px", fontSize: "clamp(16px, 2.5vw, 24px)"}}>
                             Committed to excellence in every aspect of home care
                         </p>
                     </div>
-                    <div className="grid md:grid-cols-2 gap-12">
-                        <div className="flex gap-4">
+                    <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+                        <div className="flex gap-3 sm:gap-4">
                             <div className="flex-shrink-0">
-                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
+                                <svg width="36" height="36" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg" className="w-9 h-9 sm:w-11 sm:h-11">
                                     <path
                                         d="M39.9687 18.3333C40.806 22.4424 40.2092 26.7143 38.2781 30.4366C36.3469 34.1589 33.198 37.1067 29.3565 38.7884C25.5149 40.47 21.213 40.7839 17.1681 39.6777C13.1231 38.5714 9.5797 36.1119 7.12869 32.7093C4.67768 29.3066 3.46724 25.1666 3.69923 20.9795C3.93123 16.7925 5.59163 12.8115 8.40354 9.70046C11.2155 6.58944 15.0089 4.53644 19.1513 3.88381C23.2937 3.23119 27.5346 4.01839 31.1668 6.11415"
                                         stroke="#155DFC" stroke-width="3.66667" stroke-linecap="round"
@@ -1048,20 +1048,20 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className=" text-black mb-2 font-manrope"
+                                <h3 className=" text-black mb-2 font-manrope text-lg sm:text-xl lg:text-2xl"
                                     style={{
                                         fontWeight: "500px",
-                                        fontSize: "24px"
+                                        fontSize: "clamp(18px, 2.5vw, 24px)"
                                     }}>Fully Compliant</h3>
-                                <p className="text-gray-600 font-manrope" style={{fontWeight: "400px", fontSize: "16px"}}>
+                                <p className="text-gray-600 font-manrope text-sm sm:text-base" style={{fontWeight: "400px", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                     EVV (Electronic Visit Verification) integrated for transparent, accurate billing.
                                 </p>
                             </div>
                         </div>
-                        <div className="flex gap-4">
+                        <div className="flex gap-3 sm:gap-4">
                             <div className="flex-shrink-0">
-                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
+                                <svg width="36" height="36" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg" className="w-9 h-9 sm:w-11 sm:h-11">
                                     <path
                                         d="M29.3331 38.5V34.8333C29.3331 32.8884 28.5605 31.0232 27.1852 29.6479C25.81 28.2726 23.9447 27.5 21.9998 27.5H10.9998C9.05485 27.5 7.18959 28.2726 5.81433 29.6479C4.43906 31.0232 3.66644 32.8884 3.66644 34.8333V38.5"
                                         stroke="#00A63E" stroke-width="3.66667" stroke-linecap="round"
@@ -1075,20 +1075,20 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className=" text-black mb-2 font-manrope"
+                                <h3 className=" text-black mb-2 font-manrope text-lg sm:text-xl lg:text-2xl"
                                     style={{
                                         fontWeight: "500px",
-                                        fontSize: "24px"
+                                        fontSize: "clamp(18px, 2.5vw, 24px)"
                                     }}>Vetted Caregivers</h3>
-                                <p className="text-gray-600 font-manrope" style={{fontWeight: "400px", fontSize: "16px"}}>
+                                <p className="text-gray-600 font-manrope text-sm sm:text-base" style={{fontWeight: "400px", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                     All caregivers complete comprehensive Ohio BCII & FBI background checks.
                                 </p>
                             </div>
                         </div>
-                        <div className="flex gap-4">
+                        <div className="flex gap-3 sm:gap-4">
                             <div className="flex-shrink-0">
-                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
+                                <svg width="36" height="36" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg" className="w-9 h-9 sm:w-11 sm:h-11">
                                     <path
                                         d="M36.6669 18.3334C36.6669 27.4872 26.5121 37.0206 23.1021 39.9649C22.7844 40.2038 22.3977 40.333 22.0002 40.333C21.6028 40.333 21.2161 40.2038 20.8984 39.9649C17.4884 37.0206 7.33356 27.4872 7.33356 18.3334C7.33356 14.4436 8.87879 10.713 11.6293 7.96252C14.3799 5.21198 18.1104 3.66675 22.0002 3.66675C25.8901 3.66675 29.6206 5.21198 32.3711 7.96252C35.1217 10.713 36.6669 14.4436 36.6669 18.3334Z"
                                         stroke="#9810FA" stroke-width="3.66667" stroke-linecap="round"
@@ -1100,21 +1100,21 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className=" text-gray-900 mb-2 font-manrope"
+                                <h3 className=" text-gray-900 mb-2 font-manrope text-lg sm:text-xl lg:text-2xl"
                                     style={{
                                         fontWeight: "500px",
-                                        fontSize: "24px"
+                                        fontSize: "clamp(18px, 2.5vw, 24px)"
                                     }}>Local Expertise</h3>
-                                <p className="text-gray-600 font-manrope" style={{fontWeight: "400px", fontSize: "16px"}}>
+                                <p className="text-gray-600 font-manrope text-sm sm:text-base" style={{fontWeight: "400px", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                     In-depth knowledge of Ohio Area Agencies on Aging (AAA) and County Boards of
                                     Developmental Disabilities.
                                 </p>
                             </div>
                         </div>
-                        <div className="flex gap-4">
+                        <div className="flex gap-3 sm:gap-4">
                             <div className="flex-shrink-0">
-                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
+                                <svg width="36" height="36" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg" className="w-9 h-9 sm:w-11 sm:h-11">
                                     <path
                                         d="M34.8331 25.6667C37.5648 22.99 40.3331 19.7817 40.3331 15.5833C40.3331 12.9091 39.2708 10.3443 37.3798 8.45334C35.4888 6.56235 32.924 5.5 30.2498 5.5C27.0231 5.5 24.7498 6.41667 21.9998 9.16667C19.2498 6.41667 16.9764 5.5 13.7498 5.5C11.0755 5.5 8.51077 6.56235 6.61978 8.45334C4.72879 10.3443 3.66644 12.9091 3.66644 15.5833C3.66644 19.8 6.41644 23.0083 9.16644 25.6667L21.9998 38.5L34.8331 25.6667Z"
                                         stroke="#E7000B" stroke-width="3.66667" stroke-linecap="round"
@@ -1122,12 +1122,12 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className=" text-gray-900 mb-2 font-manrope"
+                                <h3 className=" text-gray-900 mb-2 font-manrope text-lg sm:text-xl lg:text-2xl"
                                     style={{
                                         fontWeight: "500px",
-                                        fontSize: "24px"
+                                        fontSize: "clamp(18px, 2.5vw, 24px)"
                                     }}>Care-First Approach</h3>
-                                <p className="text-gray-600 font-manrope" style={{fontWeight: "400px", fontSize: "16px"}}>
+                                <p className="text-gray-600 font-manrope text-sm sm:text-base" style={{fontWeight: "400px", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                     Personalized care plans designed around your specific waiver and individual needs.
                                 </p>
                             </div>
@@ -1136,76 +1136,76 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className="py-20 lg:py-32 ">
-                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-                    <div className="mb-16">
-                        <h2 className=" text-gray-900 mb-4 font-manrope font-light"
-                            style={{ fontSize: "60px"}}>
+            <section className="py-12 sm:py-16 lg:py-32">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="mb-8 sm:mb-12 lg:mb-16">
+                        <h2 className=" text-gray-900 mb-3 sm:mb-4 font-manrope font-light text-3xl sm:text-4xl lg:text-5xl xl:text-6xl"
+                            style={{ fontSize: "clamp(28px, 5vw, 60px)"}}>
                             Our Simple 3-Step Care Process
                         </h2>
-                        <p className="text-gray-600 font-manrope font-light"
-                           style={{fontSize: "24px"}}>
+                        <p className="text-gray-600 font-manrope font-light text-base sm:text-lg lg:text-xl xl:text-2xl"
+                           style={{fontSize: "clamp(16px, 2.5vw, 24px)"}}>
                             Getting started with quality care is easy
                         </p>
                     </div>
                     <div className="relative">
-                        <div className="grid md:grid-cols-2 gap-x-16 gap-y-8">
+                        <div className="grid md:grid-cols-2 gap-x-8 sm:gap-x-12 lg:gap-x-16 gap-y-6 sm:gap-y-8">
                             {/* Step 1 - Left side */}
-                            <div className="relative flex items-start gap-4">
+                            <div className="relative flex items-start gap-3 sm:gap-4">
                                 <div
-                                    className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 bg-[#2563EB] text-white rounded-full text-xl font-bold z-10">
+                                    className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#2563EB] text-white rounded-full text-lg sm:text-xl font-bold z-10">
                                     1
                                 </div>
                                 <div>
-                                    <h3 className="text-gray-900 mb-2 font-manrope font-light"
+                                    <h3 className="text-gray-900 mb-2 font-manrope font-light text-lg sm:text-xl lg:text-2xl"
                                         style={{
-                                            fontSize: "24px",
+                                            fontSize: "clamp(18px, 2.5vw, 24px)",
                                             fontWeight: "400"
                                         }}>Initial Contact</h3>
-                                    <p className="text-gray-600 font-manrope"
-                                       style={{fontWeight: "500", fontSize: "16px"}}>
+                                    <p className="text-gray-600 font-manrope text-sm sm:text-base"
+                                       style={{fontWeight: "500", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                         Call us or complete our online form to schedule a free consultation.
                                     </p>
                                 </div>
                                 {/* Horizontal dashed line from step 1 to step 2 */}
                                 <div
-                                    className="hidden md:block absolute top-4 left-78 w-52 border-t-2 border-dashed border-gray-300"
+                                    className="hidden md:block absolute top-4 sm:top-5 left-72 sm:left-80 w-32 sm:w-52 border-t-2 border-dashed border-gray-300"
                                     style={{marginLeft: '16px'}}/>
                             </div>
-                            <div className="relative flex items-start gap-4">
+                            <div className="relative flex items-start gap-3 sm:gap-4">
                                 <div
-                                    className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 bg-[#2563EB] text-white rounded-full text-xl font-bold z-10">
+                                    className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#2563EB] text-white rounded-full text-lg sm:text-xl font-bold z-10">
                                     2
                                 </div>
                                 <div>
-                                    <h3 className="text-gray-900 mb-2 font-manrope font-light"
+                                    <h3 className="text-gray-900 mb-2 font-manrope font-light text-lg sm:text-xl lg:text-2xl"
                                         style={{
-                                            fontSize: "24px",
+                                            fontSize: "clamp(18px, 2.5vw, 24px)",
                                             fontWeight: "400"
                                         }}>Care Coordination</h3>
-                                    <p className="text-gray-600 font-manrope"
-                                       style={{fontWeight: "500", fontSize: "16px"}}>
+                                    <p className="text-gray-600 font-manrope text-sm sm:text-base"
+                                       style={{fontWeight: "500", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                         We collaborate directly with your Case Manager or Service and Support
                                         Administrator (SSA) to authorize services.
                                     </p>
                                 </div>
                             </div>
-                            <div className="relative flex items-start gap-4"></div>
-                            <div className="relative flex items-start gap-4">
+                            <div className="relative flex items-start gap-3 sm:gap-4"></div>
+                            <div className="relative flex items-start gap-3 sm:gap-4">
                                 <div
-                                    className="hidden md:block absolute -top-14 left-6 h-20 border-l-2 border-dashed border-gray-300"/>
+                                    className="hidden md:block absolute -top-12 sm:-top-14 left-5 sm:left-6 h-16 sm:h-20 border-l-2 border-dashed border-gray-300"/>
                                 <div
-                                    className="flex-shrink-0 inline-flex items-center justify-center mt-10  w-12 h-12 bg-[#2563EB] text-white rounded-full text-xl font-bold z-10">
+                                    className="flex-shrink-0 inline-flex items-center justify-center mt-8 sm:mt-10 w-10 h-10 sm:w-12 sm:h-12 bg-[#2563EB] text-white rounded-full text-lg sm:text-xl font-bold z-10">
                                     3
                                 </div>
                                 <div>
-                                    <h3 className="text-gray-900 mb-2 mt-10 font-manrope font-light"
+                                    <h3 className="text-gray-900 mb-2 mt-8 sm:mt-10 font-manrope font-light text-lg sm:text-xl lg:text-2xl"
                                         style={{
-                                            fontSize: "24px",
+                                            fontSize: "clamp(18px, 2.5vw, 24px)",
                                             fontWeight: "400"
                                         }}>Matched Care</h3>
-                                    <p className="text-gray-600 font-manrope"
-                                       style={{fontWeight: "500", fontSize: "16px"}}>
+                                    <p className="text-gray-600 font-manrope text-sm sm:text-base"
+                                       style={{fontWeight: "500", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                                         We thoughtfully match you with a caregiver who fits your needs, preferences, and
                                         personality.
                                     </p>
@@ -1216,49 +1216,49 @@ export default function LandingPage() {
                 </div>
             </section>
 </section>
-            <section id="careers" className="py-16 lg:py-24 scroll-mt-20"
+            <section id="careers" className="py-12 sm:py-16 lg:py-24 scroll-mt-20"
 
             style={{background: 'linear-gradient(90deg, #0D3796 40%, #155DFC 100%)'}}>
-                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-                    <div className="text-center mb-10">
-                        <h2 className="text-white mb-4 font-manrope font-light"
-                            style={{fontSize: "60px"}}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-8 sm:mb-10">
+                        <h2 className="text-white mb-3 sm:mb-4 font-manrope font-light text-3xl sm:text-4xl lg:text-5xl xl:text-6xl"
+                            style={{fontSize: "clamp(28px, 5vw, 60px)"}}>
                             Join Our Team of Care Professionals
                         </h2>
-                        <p className="text-white/80 max-w-2xl mx-auto font-manrope font-light"
-                           style={{ fontSize: "24px"}}>
+                        <p className="text-white/80 max-w-2xl mx-auto font-manrope font-light text-base sm:text-lg lg:text-xl xl:text-2xl"
+                           style={{ fontSize: "clamp(16px, 2.5vw, 24px)"}}>
                             We are growing and looking for compassionate, dedicated professionals to join our mission of
                             quality home care.
                         </p>
                     </div>
-                    <div className="text-white rounded-2xl px-8 py-6 mb-8">
-                        <h3 className="text-white-900 mb-6 font-manrope font-light"
-                            style={{ fontSize: "32px"}}>Now
+                    <div className="text-white rounded-2xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6 mb-6 sm:mb-8">
+                        <h3 className="text-white-900 mb-4 sm:mb-6 font-manrope font-light text-2xl sm:text-3xl lg:text-4xl"
+                            style={{ fontSize: "clamp(24px, 4vw, 32px)"}}>Now
                             Hiring</h3>
                         <div className="space-y-0">
                             {jobs.map((job, idx) => (
                                 <div
                                     key={job.id}
                                     className={
-                                        "flex flex-col md:flex-row md:items-center justify-between py-4" +
+                                        "flex flex-col md:flex-row md:items-center justify-between py-3 sm:py-4" +
                                         (idx === jobs.length - 1 ? "" : " border-b border-gray-200")
                                     }
                                 >
-                                    <div className="flex-1">
-                                        <h4 className="text-white-900 font-manrope" style={{
+                                    <div className="flex-1 mb-3 md:mb-0">
+                                        <h4 className="text-white-900 font-manrope text-base sm:text-lg lg:text-xl" style={{
                                             fontWeight: "400",
-                                            fontSize: "18px"
+                                            fontSize: "clamp(16px, 2vw, 18px)"
                                         }}>{job.title}</h4>
                                     </div>
 
-                                    <div className="flex-shrink-0 mt-3 md:mt-0 flex items-center gap-3">
+                                    <div className="flex-shrink-0 flex items-center gap-2 sm:gap-3">
                                         <button
                                             type="button"
                                             onClick={() => openJobDescription(job.id)}
-                                            className="bg-white text-[#1E40AF] px-6 py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-manrope"
+                                            className="bg-white text-[#1E40AF] px-4 py-2 sm:px-6 sm:py-2.5 rounded-lg hover:bg-gray-100 transition-colors font-manrope text-sm sm:text-base"
                                             style={{
                                                 fontWeight: "500",
-                                                fontSize: "14px",
+                                                fontSize: "clamp(13px, 1.3vw, 14px)",
                                             }}
                                         >
                                             Job Description
@@ -1266,10 +1266,10 @@ export default function LandingPage() {
                                         <button
                                             type="button"
                                             onClick={() => openApply(job.id)}
-                                            className="border font-manrope border-white text-white px-6 py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                                            className="border font-manrope border-white text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-lg hover:bg-[#1d4ed8] transition-colors text-sm sm:text-base"
                                             style={{
                                                 fontWeight: "500",
-                                                fontSize: "14px",
+                                                fontSize: "clamp(13px, 1.3vw, 14px)",
                                             }}
                                         >
                                             Apply
@@ -1279,55 +1279,55 @@ export default function LandingPage() {
                             ))}
                         </div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-2xl px-8 py-6" style={{marginBottom: "-96px"}}>
-                        <h3 className="text-white text-center mb-8 font-manrope font-light"
-                            style={{ fontSize: "24px"}}>What We
+                    <div className="bg-white/10 backdrop-blur-md rounded-2xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6" style={{marginBottom: "-64px sm:-mb-80px lg:-mb-108px"}}>
+                        <h3 className="text-white text-center mb-6 sm:mb-8 font-manrope font-light text-lg sm:text-xl lg:text-2xl"
+                            style={{ fontSize: "clamp(18px, 2.5vw, 24px)"}}>What We
                             Offer</h3>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
                             <div className="text-center">
                                 <div
-                                    className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                                    <DollarSign className="w-6 h-6 text-white"/>
+                                    className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                                    <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-white"/>
                                 </div>
-                                <p className="text-white font-manrope" style={{
+                                <p className="text-white font-manrope text-sm sm:text-base" style={{
                                     fontWeight: "500",
-                                    fontSize: "16px"
+                                    fontSize: "clamp(14px, 1.5vw, 16px)"
                                 }}>Competitive Pay</p>
                             </div>
                             <div className="text-center">
                                 <div
-                                    className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                                    <Clock className="w-6 h-6 text-white"/>
+                                    className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                                    <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white"/>
                                 </div>
-                                <p className="text-white font-manrope" style={{
+                                <p className="text-white font-manrope text-sm sm:text-base" style={{
                                     fontWeight: "500",
-                                    fontSize: "16px"
+                                    fontSize: "clamp(14px, 1.5vw, 16px)"
                                 }}>Flexible Schedules</p>
                             </div>
                             <div className="text-center">
                                 <div
-                                    className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                                    <TrendingUp className="w-6 h-6 text-white"/>
+                                    className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                                    <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-white"/>
                                 </div>
-                                <p className="text-white font-manrope" style={{
+                                <p className="text-white font-manrope text-sm sm:text-base" style={{
                                     fontWeight: "500",
-                                    fontSize: "16px"
+                                    fontSize: "clamp(14px, 1.5vw, 16px)"
                                 }}>Career Growth</p>
                             </div>
                             <div className="text-center">
                                 <div
-                                    className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                                    <Briefcase className="w-6 h-6 text-white"/>
+                                    className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                                    <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-white"/>
                                 </div>
-                                <p className="text-white font-manrope" style={{
+                                <p className="text-white font-manrope text-sm sm:text-base" style={{
                                     fontWeight: "500",
-                                    fontSize: "16px"
+                                    fontSize: "clamp(14px, 1.5vw, 16px)"
                                 }}>Meaningful Work</p>
                             </div>
                         </div>
-                        <div className="border-t border-white/30 my-6"></div>
-                        <p className="text-white/70 text-center mt-6 font-manrope"
-                           style={{fontWeight: "400", fontSize: "16px"}}>
+                        <div className="border-t border-white/30 my-4 sm:my-6"></div>
+                        <p className="text-white/70 text-center mt-4 sm:mt-6 font-manrope text-sm sm:text-base"
+                           style={{fontWeight: "400", fontSize: "clamp(14px, 1.5vw, 16px)"}}>
                             Join a team that values your dedication and provides the support you need to make a real
                             difference in people's lives.
                         </p>
@@ -1335,34 +1335,35 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section id="contact" className="py-20 lg:py-32 scroll-mt-20">
-                <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-                    <div className="text-center mb-12">
-                        <h2 className="text-gray-900 mb-4 text-6xl font-light text-[60px] font-manrope">
+            <section id="contact" className="py-12 sm:py-16 lg:py-32 scroll-mt-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-8 sm:mb-12">
+                        <h2 className="text-gray-900 mb-3 sm:mb-4 font-manrope font-light text-3xl sm:text-4xl lg:text-5xl xl:text-6xl"
+                            style={{fontSize: "clamp(28px, 5vw, 60px)"}}>
                             Get in Touch
                         </h2>
-                        <p className="text-gray-600 font-manrope"
-                           style={{fontWeight: "400", fontSize: "24px"}}>
+                        <p className="text-gray-600 font-manrope text-base sm:text-lg lg:text-xl xl:text-2xl"
+                           style={{fontWeight: "400", fontSize: "clamp(16px, 2.5vw, 24px)"}}>
                             We're here to answer your questions and help you get started with quality care
                         </p>
                     </div>
 
-                    <div className="grid lg:grid-cols-2 gap-16">
+                    <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
                         <div>
-                            <h3 className=" text-gray-900 mb-2 font-manrope"
-                                style={{fontWeight: "400", fontSize: "30px"}}>Request
+                            <h3 className=" text-gray-900 mb-2 font-manrope text-2xl sm:text-3xl lg:text-4xl"
+                                style={{fontWeight: "400", fontSize: "clamp(24px, 4vw, 30px)"}}>Request
                                 a Free Consultation</h3>
-                            <p className="text-gray-500 mb-8 font-manrope" style={{fontWeight: "400", fontSize: "16px"}}>We'll get back to you within 24 hours</p>
+                            <p className="text-gray-500 mb-6 sm:mb-8 font-manrope text-sm sm:text-base" style={{fontWeight: "400", fontSize: "clamp(14px, 1.5vw, 16px)"}}>We'll get back to you within 24 hours</p>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div className="grid grid-cols-2 gap-4">
+                            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">Full
                                             Name</label>
                                         <input
                                             type="text"
                                             placeholder="John Doe"
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent text-sm sm:text-base"
                                             value={formData.firstName}
                                             onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                                         />
@@ -1373,7 +1374,7 @@ export default function LandingPage() {
                                         <input
                                             type="tel"
                                             placeholder="+1 380-235-7179"
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent text-sm sm:text-base"
                                             value={formData.phone}
                                             onChange={(e) => {
                                                 const value = e.target.value.replace(/[^0-9+]/g, '');
@@ -1388,14 +1389,14 @@ export default function LandingPage() {
                                         />
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">Email
                                             Address</label>
                                         <input
                                             type="email"
                                             placeholder="m@example.com"
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent text-sm sm:text-base"
                                             value={formData.email}
                                             onChange={(e) => setFormData({...formData, email: e.target.value})}
                                         />
@@ -1404,7 +1405,7 @@ export default function LandingPage() {
                                         <label className="block text-sm font-medium text-gray-700 mb-2">Service
                                             Interest</label>
                                         <select
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
+                                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent text-sm sm:text-base"
                                             value={formData.service}
                                             onChange={(e) => setFormData({...formData, service: e.target.value})}
                                         >
@@ -1420,19 +1421,19 @@ export default function LandingPage() {
                                     <textarea
                                         rows={4}
                                         placeholder="Tell us about your care needs..."
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent resize-none"
+                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent resize-none text-sm sm:text-base"
                                         value={formData.message}
                                         onChange={(e) => setFormData({...formData, message: e.target.value})}
                                     />
                                 </div>
                                 {contactError ? (
-                                    <div className="text-red-600 font-manrope" style={{ fontSize: "14px" }}>
+                                    <div className="text-red-600 font-manrope text-sm sm:text-base" style={{ fontSize: "clamp(13px, 1.3vw, 14px)" }}>
                                         {contactError}
                                     </div>
                                 ) : null}
 
                                 {contactStatus === "success" ? (
-                                    <div className="text-green-600 font-manrope" style={{ fontSize: "14px" }}>
+                                    <div className="text-green-600 font-manrope text-sm sm:text-base" style={{ fontSize: "clamp(13px, 1.3vw, 14px)" }}>
                                         Form submitted successfully! We'll get back to you within 24 hours.
                                     </div>
                                 ) : null}
@@ -1441,10 +1442,10 @@ export default function LandingPage() {
                                     type="submit"
                                     disabled={contactStatus === "submitting"}
                                     className={
-                                        "w-full font-manrope bg-[#2563EB] hover:bg-[#1d4ed8] text-white py-4 rounded-lg transition-colors " +
+                                        "w-full font-manrope bg-[#2563EB] hover:bg-[#1d4ed8] text-white py-3 sm:py-4 rounded-lg transition-colors text-sm sm:text-base " +
                                         (contactStatus === "submitting" ? "opacity-70" : "")
                                     }
-                                    style={{fontWeight: "500", fontSize: "14px"}}
+                                    style={{fontWeight: "500", fontSize: "clamp(13px, 1.3vw, 14px)"}}
                                 >
                                     {contactStatus === "submitting" ? "Submitting..." : "Submit Request"}
                                 </button>
@@ -1452,7 +1453,7 @@ export default function LandingPage() {
                         </div>
 
                         <div>
-                            <div className="bg-gray-200 rounded-2xl h-64 mb-8 overflow-hidden">
+                            <div className="bg-gray-200 rounded-2xl h-48 sm:h-56 lg:h-64 mb-6 sm:mb-8 overflow-hidden">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194473.53880754045!2d-83.15532645!3d40.0581205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388c0e0e0e0e0e%3A0x0!2sColumbus%2C%20OH!5e0!3m2!1sen!2sus!4v1234567890"
                                     width="100%"
@@ -1464,14 +1465,14 @@ export default function LandingPage() {
                                     title="Office Location"
                                 />
                             </div>
-                            <div className="space-y-6">
+                            <div className="space-y-4 sm:space-y-6">
                                 {/* Phone */}
-                                <div className="grid grid-cols-[180px_1fr] gap-6 items-start">
-                                    <div className="flex items-center gap-3">
-                                        <Phone className="w-5 h-5 text-gray-500" />
+                                <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-3 sm:gap-6 items-start">
+                                    <div className="flex items-center gap-2 sm:gap-3">
+                                        <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />
                                         <span
-                                            className="text-gray-900 font-manrope"
-                                            style={{fontSize: "14px" }}
+                                            className="text-gray-900 font-manrope text-sm sm:text-base"
+                                            style={{fontSize: "clamp(13px, 1.3vw, 14px)" }}
                                         >
         Phone
       </span>
@@ -1479,22 +1480,22 @@ export default function LandingPage() {
 
                                     <div>
                                         <p
-                                            className="text-gray-700 font-manrope"
-                                            style={{fontSize: "14px" }}
+                                            className="text-gray-700 font-manrope text-sm sm:text-base"
+                                            style={{fontSize: "clamp(13px, 1.3vw, 14px)" }}
                                         >
                                             380-235-7179
                                         </p>
-                                        <p className="text-sm text-gray-500 font-manrope">Available 24/7</p>
+                                        <p className="text-xs sm:text-sm text-gray-500 font-manrope">Available 24/7</p>
                                     </div>
                                 </div>
 
                                 {/* Fax */}
-                                <div className="grid grid-cols-[180px_1fr] gap-6 items-start">
-                                    <div className="flex items-center gap-3">
-                                        <Phone className="w-5 h-5 text-gray-500" />
+                                <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-3 sm:gap-6 items-start">
+                                    <div className="flex items-center gap-2 sm:gap-3">
+                                        <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />
                                         <span
-                                            className="text-gray-900 font-manrope"
-                                            style={{fontSize: "14px" }}
+                                            className="text-gray-900 font-manrope text-sm sm:text-base"
+                                            style={{fontSize: "clamp(13px, 1.3vw, 14px)" }}
                                         >
         Fax
       </span>
@@ -1502,22 +1503,22 @@ export default function LandingPage() {
 
                                     <div>
                                         <p
-                                            className="text-gray-700 font-manrope"
-                                            style={{fontSize: "14px" }}
+                                            className="text-gray-700 font-manrope text-sm sm:text-base"
+                                            style={{fontSize: "clamp(13px, 1.3vw, 14px)" }}
                                         >
                                             380-234-6670
                                         </p>
-                                        <p className="text-sm text-gray-500 font-manrope">Available 24/7</p>
+                                        <p className="text-xs sm:text-sm text-gray-500 font-manrope">Available 24/7</p>
                                     </div>
                                 </div>
 
                                 {/* Email */}
-                                <div className="grid grid-cols-[180px_1fr] gap-6 items-start">
-                                    <div className="flex items-center gap-3">
-                                        <Mail className="w-5 h-5 text-gray-500" />
+                                <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-3 sm:gap-6 items-start">
+                                    <div className="flex items-center gap-2 sm:gap-3">
+                                        <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />
                                         <span
-                                            className="text-gray-900 font-manrope"
-                                            style={{fontSize: "14px" }}
+                                            className="text-gray-900 font-manrope text-sm sm:text-base"
+                                            style={{fontSize: "clamp(13px, 1.3vw, 14px)" }}
                                         >
         Email
       </span>
@@ -1525,32 +1526,32 @@ export default function LandingPage() {
 
                                     <div>
                                         <p
-                                            className="text-gray-700 font-manrope"
-                                            style={{fontSize: "14px" }}
+                                            className="text-gray-700 font-manrope text-sm sm:text-base break-all"
+                                            style={{fontSize: "clamp(13px, 1.3vw, 14px)" }}
                                         >
                                             team@abetterchoicecare.com
                                         </p>
-                                        <p className="text-sm text-gray-500 font-manrope">
+                                        <p className="text-xs sm:text-sm text-gray-500 font-manrope">
                                             We'll respond within 24 hours
                                         </p>
                                     </div>
                                 </div>
 
                                 {/* Office Location */}
-                                <div className="grid grid-cols-[180px_1fr] gap-6 items-start">
-                                    <div className="flex items-center gap-3">
-                                        <MapPinned className="w-5 h-5 text-gray-500" />
+                                <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-3 sm:gap-6 items-start">
+                                    <div className="flex items-center gap-2 sm:gap-3">
+                                        <MapPinned className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />
                                         <span
-                                            className=" text-gray-900 font-manrope"
-                                            style={{ fontSize: "14px" }}
+                                            className=" text-gray-900 font-manrope text-sm sm:text-base"
+                                            style={{ fontSize: "clamp(13px, 1.3vw, 14px)" }}
                                         >
         Office Location
       </span>
                                     </div>
                                     <div>
                                         <p
-                                            className="text-gray-700 font-manrope"
-                                            style={{fontSize: "14px" }}
+                                            className="text-gray-700 font-manrope text-sm sm:text-base"
+                                            style={{fontSize: "clamp(13px, 1.3vw, 14px)" }}
                                         >
                                             2700 E Dublin-Granville Rd STE 2708
                                             <br />
@@ -1558,7 +1559,7 @@ export default function LandingPage() {
                                         </p>
                                         <a
                                             href="#"
-                                            className="text-[#2563EB] text-sm hover:underline inline-block mt-1"
+                                            className="text-[#2563EB] text-xs sm:text-sm hover:underline inline-block mt-1"
                                         >
                                             Get Directions →
                                         </a>
