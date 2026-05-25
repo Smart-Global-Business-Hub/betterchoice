@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
         },
         to: [
           {
-            email: 'info@abetterchoicecare.com',
+            email: 'team@abetterchoicecare.com',
             name: 'A Better Choice Care Team'
           }
         ],

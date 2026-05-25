@@ -180,7 +180,7 @@ export default function LandingPage() {
         setContactError("");
 
         // Validate required fields
-        if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim() || !formData.message.trim()) {
+        if (!formData.firstName.trim() || !formData.email.trim() || !formData.message.trim()) {
             setContactError("Please fill in all required fields.");
             return;
         }
@@ -1372,10 +1372,19 @@ export default function LandingPage() {
                                             Number</label>
                                         <input
                                             type="tel"
-                                            placeholder="+97112345678"
+                                            placeholder="+1 380-235-7179"
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2563EB] focus:border-transparent"
                                             value={formData.phone}
-                                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                            onChange={(e) => {
+                                                const value = e.target.value.replace(/[^0-9+]/g, '');
+
+                                                // Allow only one "+" at the start
+                                                const formattedValue = value.startsWith('+')
+                                                    ? '+' + value.slice(1).replace(/\+/g, '')
+                                                    : value.replace(/\+/g, '');
+
+                                                setFormData({ ...formData, phone: formattedValue });
+                                            }}
                                         />
                                     </div>
                                 </div>
@@ -1519,7 +1528,7 @@ export default function LandingPage() {
                                             className="text-gray-700 font-manrope"
                                             style={{fontSize: "14px" }}
                                         >
-                                            info@abetterchoicecare.com
+                                            team@abetterchoicecare.com
                                         </p>
                                         <p className="text-sm text-gray-500 font-manrope">
                                             We'll respond within 24 hours

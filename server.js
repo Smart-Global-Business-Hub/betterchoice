@@ -15,7 +15,7 @@ app.post('/api/contact', async (req, res) => {
     const { firstName, lastName, email, phone, service, message } = req.body;
 
     // Validate required fields
-    if (!firstName || !lastName || !email || !message) {
+    if (!firstName || !email || !message) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 

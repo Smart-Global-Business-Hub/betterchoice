@@ -3,18 +3,14 @@ import fs from 'fs'
 import path from 'path'
 // import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import nodemailer from 'nodemailer'
 
 export default defineConfig(({ mode }) => {
   const rootDir = (globalThis as any).process?.cwd?.() ?? '.'
   const env = loadEnv(mode, rootDir, '')
 
-  const mailtrapHost = env.MAILTRAP_HOST || 'sandbox.smtp.mailtrap.io'
-  const mailtrapPort = Number(env.MAILTRAP_PORT || '2525')
-  const mailtrapUser = env.MAILTRAP_USER
-  const mailtrapPass = env.MAILTRAP_PASS
-  const mailFrom = env.MAIL_FROM || 'no-reply@moonlight.local'
-  const careersTo = env.CAREERS_TO || 'talha196javed@gmail.com'
+  const postmarkApiKey = env.POSTMARK_API_KEY || 'd9fa94eb-f2ba-443b-9439-39b9e22bc807'
+  const senderEmail = env.SENDER_EMAIL || 'info@moonlightbc.com'
+  const ownerEmail = env.OWNER_EMAIL || 'info@moonlightbc.com'
 
   return {
     plugins: [
@@ -42,7 +38,7 @@ export default defineConfig(({ mode }) => {
         },
       },
       {
-        name: 'book-consultation-mailtrap',
+        name: 'book-consultation-postmark',
         configureServer(server) {
           server.middlewares.use('/api/book-consultation', (req: any, res: any, next: any) => {
             if (req.method !== 'POST') return next()
@@ -53,14 +49,9 @@ export default defineConfig(({ mode }) => {
             })
             req.on('end', async () => {
               try {
-                if (!mailtrapUser || !mailtrapPass) {
-                  res.statusCode = 500
-                  res.setHeader('Content-Type', 'text/plain')
-                  res.end('Missing MAILTRAP_USER / MAILTRAP_PASS env vars')
-                  return
-                }
-
+                console.log('[Book Consultation] Request received')
                 const parsed = body ? JSON.parse(body) : {}
+                console.log('[Book Consultation] Parsed body:', parsed)
 
                 const toEmail = String(parsed.toEmail || '').trim()
                 const fullName = String(parsed.fullName || '').trim()
@@ -71,194 +62,128 @@ export default defineConfig(({ mode }) => {
 
                 if (!toEmail || !fullName || !phone || !dateLabel || !timeLabel) {
                   res.statusCode = 400
-                  res.setHeader('Content-Type', 'text/plain')
-                  res.end('Missing required fields')
+                  res.setHeader('Content-Type', 'application/json')
+                  res.end(JSON.stringify({ error: 'Missing required fields' }))
                   return
                 }
 
-                const transporter = nodemailer.createTransport({
-                  host: mailtrapHost,
-                  port: mailtrapPort,
-                  auth: {
-                    user: mailtrapUser,
-                    pass: mailtrapPass,
+                // Send via Postmark API
+                const postmarkUrl = 'https://api.postmarkapp.com/email'
+
+                // Customer email
+                const customerEmailData = {
+                  From: senderEmail,
+                  To: toEmail,
+                  Subject: 'Your consultation slot has been booked',
+                  HtmlBody: `
+<html>
+<head>
+    <title>Consultation Booking Confirmation</title>
+</head>
+<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
+    <div style='background: linear-gradient(129.33deg, #2563EB 12.21%, #1d4ed8 126.73%); color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;'>
+        <h1 style='margin: 0; font-size: 24px;'>Booking Confirmed!</h1>
+    </div>
+    <div style='background: #f9f9f9; padding: 30px; border: 1px solid #e0e0e0; border-radius: 0 0 10px 10px;'>
+        <p>Hi <strong>${fullName}</strong>,</p>
+        <p>Your consultation slot has been successfully booked. Here are the details:</p>
+        
+        <div style='background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2563EB;'>
+            <h3 style='margin-top: 0; color: #333;'>Appointment Details</h3>
+            <p><strong>Date:</strong> ${dateLabel}</p>
+            <p><strong>Time:</strong> ${timeLabel}</p>
+            <p><strong>Email:</strong> ${toEmail}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            ${brief ? `<p><strong>Brief Information:</strong> ${brief}</p>` : ''}
+        </div>
+        
+        <p style='color: #666; font-size: 14px;'>
+            Please arrive 5 minutes before your scheduled time. If you need to reschedule, contact us at least 24 hours in advance.
+        </p>
+        
+        <p style='margin-top: 30px;'>Thank you!</p>
+        <p style='margin-bottom: 0;'><strong>A Better Choice Care Team</strong></p>
+    </div>
+</body>
+</html>`,
+                  TextBody: `Hi ${fullName},\n\nYour consultation slot has been booked on ${dateLabel} at ${timeLabel}.\n\nEmail: ${toEmail}\nPhone: ${phone}\n${brief ? `Brief information: ${brief}\n` : ''}\nThank you.`,
+                  MessageStream: 'outbound'
+                }
+
+                // Owner notification email
+                const ownerEmailData = {
+                  From: senderEmail,
+                  To: ownerEmail,
+                  Subject: `New Consultation Booking - ${fullName}`,
+                  HtmlBody: `
+<html>
+<head>
+    <title>New Consultation Booking</title>
+</head>
+<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
+    <div style='background: linear-gradient(129.33deg, #2563EB 12.21%, #1d4ed8 126.73%); color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;'>
+        <h1 style='margin: 0; font-size: 24px;'>New Booking Received</h1>
+    </div>
+    <div style='background: #f9f9f9; padding: 30px; border: 1px solid #e0e0e0; border-radius: 0 0 10px 10px;'>
+        <p>A new consultation booking has been made. Here are the details:</p>
+        
+        <div style='background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2563EB;'>
+            <h3 style='margin-top: 0; color: #333;'>Patient Details</h3>
+            <p><strong>Name:</strong> ${fullName}</p>
+            <p><strong>Email:</strong> ${toEmail}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+        </div>
+        
+        <div style='background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #1d4ed8;'>
+            <h3 style='margin-top: 0; color: #333;'>Appointment Details</h3>
+            <p><strong>Date:</strong> ${dateLabel}</p>
+            <p><strong>Time:</strong> ${timeLabel}</p>
+            ${brief ? `<p><strong>Brief Information:</strong> ${brief}</p>` : ''}
+        </div>
+        
+        <p style='margin-top: 30px;'><strong>A Better Choice Care Team</strong></p>
+    </div>
+</body>
+</html>`,
+                  TextBody: `New consultation booking received.\n\nPatient Details:\nName: ${fullName}\nEmail: ${toEmail}\nPhone: ${phone}\n\nAppointment Details:\nDate: ${dateLabel}\nTime: ${timeLabel}\n${brief ? `Brief information: ${brief}\n` : ''}\nA Better Choice Care Team`,
+                  MessageStream: 'outbound'
+                }
+
+                // Send customer email
+                const customerResponse = await fetch(postmarkUrl, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-Postmark-Server-Token': postmarkApiKey
                   },
+                  body: JSON.stringify(customerEmailData)
                 })
 
-                const subject = 'Your consultation slot has been booked'
-                const text =
-                  `Hi ${fullName},\n\n` +
-                  `Your consultation slot has been booked on ${dateLabel} at ${timeLabel}.\n\n` +
-                  `Phone: ${phone}\n` +
-                  (brief ? `Brief information: ${brief}\n` : '') +
-                  `\nThank you.`
-
-                await transporter.sendMail({
-                  from: mailFrom,
-                  to: toEmail,
-                  subject,
-                  text,
-                })
-
-                res.statusCode = 200
-                res.setHeader('Content-Type', 'application/json')
-                res.end(JSON.stringify({ ok: true }))
-              } catch (e: any) {
-                res.statusCode = 500
-                res.setHeader('Content-Type', 'text/plain')
-                res.end(e?.message ? String(e.message) : 'Failed to send email')
-              }
-            })
-          })
-        },
-      },
-      {
-        name: 'job-application-mailtrap',
-        configureServer(server) {
-          server.middlewares.use('/api/job-application', (req: any, res: any, next: any) => {
-            if (req.method !== 'POST') return next()
-
-            let body = ''
-            req.on('data', (chunk: any) => {
-              body += chunk
-            })
-
-            req.on('end', async () => {
-              try {
-                if (!mailtrapUser || !mailtrapPass) {
-                  res.statusCode = 500
-                  res.setHeader('Content-Type', 'text/plain')
-                  res.end('Missing MAILTRAP_USER / MAILTRAP_PASS env vars')
-                  return
-                }
-
-                const parsed = body ? JSON.parse(body) : {}
-
-                const jobTitle = String(parsed.jobTitle || '').trim()
-                const firstName = String(parsed.firstName || '').trim()
-                const lastName = String(parsed.lastName || '').trim()
-                const email = String(parsed.email || '').trim()
-                const phone = String(parsed.phone || '').trim()
-                const streetAddress = String(parsed.streetAddress || '').trim()
-                const city = String(parsed.city || '').trim()
-                const state = String(parsed.state || '').trim()
-                const zipCode = String(parsed.zipCode || '').trim()
-                const certificationNumber = String(parsed.certificationNumber || '').trim()
-                const certificationExpiryDate = String(parsed.certificationExpiryDate || '').trim()
-                const yearsOfExperience = String(parsed.yearsOfExperience || '').trim()
-                const availability = String(parsed.availability || '').trim()
-                const interestReason = String(parsed.interestReason || '').trim()
-                const professionalReferences = String(parsed.professionalReferences || '').trim()
-
-                const consentBackground = Boolean(parsed.consentBackground)
-                const consentPersonalData = Boolean(parsed.consentPersonalData)
-
-                const resumeFile = parsed.resumeFile || null
-                const resumeName = resumeFile ? String(resumeFile.name || '').trim() : ''
-                const resumeType = resumeFile ? String(resumeFile.type || 'application/octet-stream').trim() : ''
-                const resumeBase64 = resumeFile ? String(resumeFile.base64 || '').trim() : ''
-
-                if (!jobTitle || !firstName || !lastName || !email || !phone) {
-                  res.statusCode = 400
-                  res.setHeader('Content-Type', 'text/plain')
-                  res.end('Missing required fields')
-                  return
-                }
-
-                if (!streetAddress || !city || !state || !zipCode) {
-                  res.statusCode = 400
-                  res.setHeader('Content-Type', 'text/plain')
-                  res.end('Missing required address fields')
-                  return
-                }
-
-                if (!certificationNumber || !certificationExpiryDate || !yearsOfExperience || !availability || !interestReason) {
-                  res.statusCode = 400
-                  res.setHeader('Content-Type', 'text/plain')
-                  res.end('Missing required professional fields')
-                  return
-                }
-
-                if (!consentBackground || !consentPersonalData) {
-                  res.statusCode = 400
-                  res.setHeader('Content-Type', 'text/plain')
-                  res.end('Missing required consents')
-                  return
-                }
-
-                if (!resumeBase64 || !resumeName) {
-                  res.statusCode = 400
-                  res.setHeader('Content-Type', 'text/plain')
-                  res.end('Resume is required')
-                  return
-                }
-
-                const transporter = nodemailer.createTransport({
-                  host: mailtrapHost,
-                  port: mailtrapPort,
-                  auth: {
-                    user: mailtrapUser,
-                    pass: mailtrapPass,
+                // Send owner notification email
+                const ownerResponse = await fetch(postmarkUrl, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-Postmark-Server-Token': postmarkApiKey
                   },
+                  body: JSON.stringify(ownerEmailData)
                 })
 
-                const fullName = `${firstName} ${lastName}`.trim()
-                const subject = `New Job Application: ${jobTitle} - ${fullName}`
-                const text =
-                  `A new job application has been submitted.\n\n` +
-                  `Job Title: ${jobTitle}\n` +
-                  `Name: ${fullName}\n` +
-                  `Email: ${email}\n` +
-                  `Phone: ${phone}\n\n` +
-                  `Address:\n` +
-                  `${streetAddress}\n` +
-                  `${city}, ${state} ${zipCode}\n\n` +
-                  `Professional Information:\n` +
-                  `Certification Number: ${certificationNumber}\n` +
-                  `Certification Expiry Date: ${certificationExpiryDate}\n` +
-                  `Years of Experience: ${yearsOfExperience}\n` +
-                  `Availability: ${availability}\n\n` +
-                  `Why interested:\n${interestReason}\n\n` +
-                  (professionalReferences ? `Professional References:\n${professionalReferences}\n\n` : '') +
-                  `Consents:\n` +
-                  `Background/drug screening: ${consentBackground ? 'Yes' : 'No'}\n` +
-                  `Personal data processing: ${consentPersonalData ? 'Yes' : 'No'}\n`
-
-                const attachments: any[] = []
-
-                const dataUrlPrefixMatch = resumeBase64.match(/^data:(.+);base64,(.*)$/)
-                if (dataUrlPrefixMatch) {
-                  attachments.push({
-                    filename: resumeName,
-                    content: dataUrlPrefixMatch[2],
-                    encoding: 'base64',
-                    contentType: resumeType || dataUrlPrefixMatch[1],
-                  })
+                if (customerResponse.ok && ownerResponse.ok) {
+                  res.statusCode = 200
+                  res.setHeader('Content-Type', 'application/json')
+                  res.end(JSON.stringify({ success: true, message: 'Emails sent successfully via Postmark' }))
                 } else {
-                  attachments.push({
-                    filename: resumeName,
-                    content: resumeBase64,
-                    encoding: 'base64',
-                    contentType: resumeType,
-                  })
+                  const customerErrorText = await customerResponse.text()
+                  const ownerErrorText = await ownerResponse.text()
+                  res.statusCode = 500
+                  res.setHeader('Content-Type', 'application/json')
+                  res.end(JSON.stringify({ error: 'Failed to send email via Postmark', customer_response: customerErrorText, owner_response: ownerErrorText }))
                 }
-
-                await transporter.sendMail({
-                  from: mailFrom,
-                  to: careersTo,
-                  replyTo: email,
-                  subject,
-                  text,
-                  attachments,
-                })
-
-                res.statusCode = 200
-                res.setHeader('Content-Type', 'application/json')
-                res.end(JSON.stringify({ ok: true }))
               } catch (e: any) {
                 res.statusCode = 500
-                res.setHeader('Content-Type', 'text/plain')
-                res.end(e?.message ? String(e.message) : 'Failed to send email')
+                res.setHeader('Content-Type', 'application/json')
+                res.end(JSON.stringify({ error: e?.message ? String(e.message) : 'Failed to send email' }))
               }
             })
           })
