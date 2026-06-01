@@ -3,9 +3,9 @@
 To use Postmark for sending consultation booking emails, add the following environment variables to your `.env.local` file:
 
 ```
-POSTMARK_API_KEY=d9fa94eb-f2ba-443b-9439-39b9e22bc807
-SENDER_EMAIL=info@moonlightbc.com
-OWNER_EMAIL=info@moonlightbc.com
+POSTMARK_API_KEY=902ab639-1cd8-4e37-98bb-db206b00eb0d
+SENDER_EMAIL=team@abetterchoicecare.com
+OWNER_EMAIL=team@abetterchoicecare.com
 ```
 
 ## Email Content

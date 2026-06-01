@@ -8,9 +8,9 @@ export default defineConfig(({ mode }) => {
   const rootDir = (globalThis as any).process?.cwd?.() ?? '.'
   const env = loadEnv(mode, rootDir, '')
 
-  const postmarkApiKey = env.POSTMARK_API_KEY || 'd9fa94eb-f2ba-443b-9439-39b9e22bc807'
-  const senderEmail = env.SENDER_EMAIL || 'info@moonlightbc.com'
-  const ownerEmail = env.OWNER_EMAIL || 'info@moonlightbc.com'
+  const postmarkApiKey = env.POSTMARK_API_KEY || '902ab639-1cd8-4e37-98bb-db206b00eb0d'
+  const senderEmail = env.SENDER_EMAIL || 'team@abetterchoicecare.com'
+  const ownerEmail = env.OWNER_EMAIL || 'team@abetterchoicecare.com'
 
   return {
     plugins: [
